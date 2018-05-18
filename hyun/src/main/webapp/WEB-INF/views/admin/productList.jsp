@@ -41,7 +41,7 @@
 			  		<c:forEach items="${productList }" var="productList">
 			  			<tr>
 			  				<td>${productList.pdNo}</td>
-			  				<td>${productList.pdName}</td>
+			  				<td><a href="/admin/productDetail">${productList.pdName}</a></td>
 			  				<td>${productList.pdGender}</td>
 			  				<td>${productList.pdKind}</td>
 			  				<td>${productList.pdPrice}</td>
@@ -55,5 +55,7 @@
 			  	</c:otherwise>
 	</c:choose>
 </table>
+<input type="button" value="상품등록" onclick="location.href='/admin/productWrite';">
+<a href="/admin/product/productExcelDownload">엑셀 다운로드</a>		
 </body>
 </html>

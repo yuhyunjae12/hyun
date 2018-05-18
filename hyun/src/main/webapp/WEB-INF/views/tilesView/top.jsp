@@ -22,7 +22,7 @@
 							<a href="/users/usersInsert">
 								regist
 							</a>
-							<a href="/admin/product">
+							<a href="/admin/main">
 								admin
 							</a>
 						</li>
