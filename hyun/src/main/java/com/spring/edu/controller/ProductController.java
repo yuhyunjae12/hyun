@@ -1,6 +1,8 @@
 package com.spring.edu.controller;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -110,4 +112,37 @@ public class ProductController {
 		return (View) new ProductExcelDownload();
 	}
 	
+	 @RequestMapping(value = "/admin/uploadFile", method = RequestMethod.POST)
+	  public String uploadFile(@RequestParam("file") MultipartFile file,Model model) {
+
+			String name = file.getOriginalFilename();
+			try {
+				byte[] bytes = file.getBytes();
+				
+				String rootPath = System.getProperty("catalina.home");  
+				File dir = new File(rootPath + File.separator + "tmpFiles");
+				if (!dir.exists())
+					dir.mkdirs();
+
+				File serverFile = new File(dir.getAbsolutePath()+ File.separator + name);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+				stream.write(bytes);
+				stream.close();
+				System.out.println(dir);
+				System.out.println(stream.toString());
+				System.out.println(serverFile.toString());
+				System.out.println(dir.getAbsolutePath()+ File.separator + name);
+				model.addAttribute("message", "업로드성공=" + name );
+				model.addAttribute("fileName",name);
+			} catch (Exception e) {
+				model.addAttribute("message", "파일 업로드 " + name + " => " + e.getMessage());
+			}
+
+		return "/admin/fileupload";
+	  }
+	  @RequestMapping(value = "/admin/upload", method = RequestMethod.GET)
+	  public String showUploadPage(Model model) {
+		
+		return "/admin/fileupload";
+	  }
 }
