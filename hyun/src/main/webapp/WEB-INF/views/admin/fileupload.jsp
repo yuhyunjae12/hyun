@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
   <h1>Please Select File to upload!!!</h1>
 
   <form method="POST" action="uploadFile" enctype="multipart/form-data">
@@ -21,7 +22,7 @@
 	
   <c:choose>
     <c:when test="${not empty fileName}">
-	<img src="/images/${fileName}" /> 
+	<img src="${fileName}" /> 
     </c:when>
     <c:otherwise>
 	<p>Nothing to show</p>

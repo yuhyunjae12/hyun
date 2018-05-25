@@ -132,8 +132,10 @@ public class ProductController {
 				System.out.println(stream.toString());
 				System.out.println(serverFile.toString());
 				System.out.println(dir.getAbsolutePath()+ File.separator + name);
+				
+				model.addAttribute("images",dir);
 				model.addAttribute("message", "업로드성공=" + name );
-				model.addAttribute("fileName",name);
+				model.addAttribute("fileName",serverFile);
 			} catch (Exception e) {
 				model.addAttribute("message", "파일 업로드 " + name + " => " + e.getMessage());
 			}
