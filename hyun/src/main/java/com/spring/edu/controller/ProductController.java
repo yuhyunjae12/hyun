@@ -128,10 +128,6 @@ public class ProductController {
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 				stream.write(bytes);
 				stream.close();
-				System.out.println(dir);
-				System.out.println(stream.toString());
-				System.out.println(serverFile.toString());
-				System.out.println(dir.getAbsolutePath()+ File.separator + name);
 				
 				model.addAttribute("images",dir);
 				model.addAttribute("message", "업로드성공=" + name );
