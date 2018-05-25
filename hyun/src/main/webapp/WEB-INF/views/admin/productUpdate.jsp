@@ -45,7 +45,7 @@
 						<td>${productDetail.pdSale}</td>
 						<td>${productDetail.pdVaccine}</td>
 						<td>${productDetail.pdBirth}</td>
-						<td>${productDetail.pdImg}</td>
+						<td><img src="/images/${productDetail.pdImg}" /></td>
 						<td>${productDetail.pdRegdate}</td>
 					</tr>
 					<tr>

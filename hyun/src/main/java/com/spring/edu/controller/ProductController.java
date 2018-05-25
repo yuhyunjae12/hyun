@@ -73,11 +73,21 @@ public class ProductController {
 			 return modelAndView;
 		}
 	     
-	     File f = new File("C:\\Users\\hyun\\uploads\\"+file.getOriginalFilename());
-	     file.transferTo(f);
-	     
-	     productVo.setPdImg(file.getOriginalFilename().toString());
-	     service.productInsert(productVo);
+		String name = file.getOriginalFilename();
+		byte[] bytes = file.getBytes();
+		
+		String rootPath = System.getProperty("catalina.home");  
+		File dir = new File(rootPath + File.separator + "tmpFiles");
+		if (!dir.exists())
+			dir.mkdirs();
+
+		File serverFile = new File(dir.getAbsolutePath()+ File.separator + name);
+		BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+		stream.write(bytes);
+		stream.close();
+	    
+	    productVo.setPdImg(file.getOriginalFilename().toString());
+	    service.productInsert(productVo);
 	    return new ModelAndView("redirect:/admin/product");
 	}
 	@RequestMapping(value="/admin/productWrite")
@@ -97,11 +107,22 @@ public class ProductController {
 			 return modelAndView;
 		}
 	     
-	     File f = new File("C:\\Users\\hyun\\uploads\\"+file.getOriginalFilename());
-	     file.transferTo(f);
-	     
-	     productVo.setPdImg(file.getOriginalFilename().toString());
-	     service.productInsert(productVo);
+		String name = file.getOriginalFilename();
+		byte[] bytes = file.getBytes();
+		
+		String rootPath = System.getProperty("catalina.home");  
+		File dir = new File(rootPath + File.separator + "tmpFiles");
+		if (!dir.exists())
+			dir.mkdirs();
+
+		File serverFile = new File(dir.getAbsolutePath()+ File.separator + name);
+		BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+		stream.write(bytes);
+		stream.close();
+			
+	    productVo.setPdImg(file.getOriginalFilename().toString());
+	    service.productInsert(productVo);
+	    
 	    return new ModelAndView("redirect:/admin/product");
 	}
 	
@@ -113,29 +134,29 @@ public class ProductController {
 		return (View) new ProductExcelDownload();
 	}
 	
-	 @RequestMapping(value = "/admin/uploadFile", method = RequestMethod.POST)
-	  public String uploadFile(@RequestParam("file") MultipartFile file,Model model) throws IOException {
+	@RequestMapping(value = "/admin/uploadFile", method = RequestMethod.POST)
+	 public String uploadFile(@RequestParam("file") MultipartFile file,Model model) throws IOException {
 
 			String name = file.getOriginalFilename();
-				byte[] bytes = file.getBytes();
-				
-				String rootPath = System.getProperty("catalina.home");  
-				File dir = new File(rootPath + File.separator + "tmpFiles");
-				if (!dir.exists())
-					dir.mkdirs();
+			byte[] bytes = file.getBytes();
+			
+			String rootPath = System.getProperty("catalina.home");  
+			File dir = new File(rootPath + File.separator + "tmpFiles");
+			if (!dir.exists())
+				dir.mkdirs();
 
-				File serverFile = new File(dir.getAbsolutePath()+ File.separator + name);
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
-				
-				model.addAttribute("fileName",name);
+			File serverFile = new File(dir.getAbsolutePath()+ File.separator + name);
+			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+			stream.write(bytes);
+			stream.close();
+			
+			model.addAttribute("fileName",name);
 
-		return "/admin/fileupload";
-	  }
-	  @RequestMapping(value = "/admin/upload", method = RequestMethod.GET)
-	  public String showUploadPage(Model model) {
-		
-		return "/admin/fileupload";
-	  }
+	return "/admin/fileupload";
+	 }
+	 @RequestMapping(value = "/admin/upload", method = RequestMethod.GET)
+	 public String showUploadPage(Model model) {
+	
+	return "/admin/fileupload";
+	 }
 }
