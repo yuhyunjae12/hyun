@@ -135,7 +135,7 @@ public class ProductController {
 				
 				model.addAttribute("images",dir);
 				model.addAttribute("message", "업로드성공=" + name );
-				model.addAttribute("fileName",serverFile);
+				model.addAttribute("fileName",name);
 			} catch (Exception e) {
 				model.addAttribute("message", "파일 업로드 " + name + " => " + e.getMessage());
 			}

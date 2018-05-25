@@ -22,7 +22,7 @@
 	
   <c:choose>
     <c:when test="${not empty fileName}">
-	<img src="${fileName}" /> 
+	<img src="/images/${fileName}" /> 
     </c:when>
     <c:otherwise>
 	<p>Nothing to show</p>
