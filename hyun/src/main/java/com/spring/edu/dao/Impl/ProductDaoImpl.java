@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.edu.dao.ProductDao;
 import com.spring.edu.vo.ProductVo;
+import com.spring.edu.vo.form.productForm;
 @Repository
 public class ProductDaoImpl implements ProductDao {
 
@@ -20,6 +21,20 @@ public class ProductDaoImpl implements ProductDao {
 		List<ProductVo> list = session.selectList(namespace+"productList");
 		return list;
 	}
+
+	@Override
+	public int productInsert(productForm productVo) {
+		int res = session.insert(namespace+"productInsert", productVo);
+		return res;
+	}
+
+	@Override
+	public ProductVo productDetail(int pdNo) {
+		ProductVo res = session.selectOne(namespace+"productDetail", pdNo);
+		return res;
+	}
+	
+	
 	
 
 }

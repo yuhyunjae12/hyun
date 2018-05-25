@@ -20,10 +20,9 @@ $("#savebutton").click(function(){
 </head>
 <body>
 
-	<form:form modelAttribute="usersForm" name="usersForm"
-		action="/users/insertAfter" method="post">
+	<form:form modelAttribute="usersForm" name="usersForm" action="/users/insertAfter" method="post">
 		<h3>회원 가입</h3>
-		<input placeholder="아이디를 입력해주세요" type="text" name="uNo"/>
+		<input placeholder="아이디를 입력해주세요" type="text" name="uId"/>
 		<form:errors path="uId" />
 		<br>
 		<input placeholder="비밀번호를 입력해주세요" type="text" name="uPw"/>

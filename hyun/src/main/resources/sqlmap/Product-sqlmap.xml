@@ -3,18 +3,66 @@
 <mapper namespace="product">
 
 <select id="productList" resultType="ProductVo">
-SELECT
-	 PD_NO
-	,PD_NAME
-	,PD_GENDER
-	,PD_KIND
-	,PD_PRICE
-	,PD_SALE
-	,PD_VACCINE
-	,PD_BIRTH
-	,PD_IMG
-	,PD_REGDATE
-	FROM PRODUCT
+	SELECT
+		 PD_NO
+		,PD_NAME
+		,PD_GENDER
+		,PD_KIND
+		,PD_PRICE
+		,PD_SALE
+		,PD_VACCINE
+		,PD_BIRTH
+		,PD_IMG
+		,PD_REGDATE
+		FROM PRODUCT
 </select>
+
+
+<select id="productDetail" parameterType="int" resultType="ProductVo">
+	SELECT
+		 PD_NO
+		,PD_NAME
+		,PD_GENDER
+		,PD_KIND
+		,PD_PRICE
+		,PD_SALE
+		,PD_VACCINE
+		,PD_BIRTH
+		,PD_IMG
+		,PD_REGDATE
+			FROM PRODUCT
+			WHERE PD_NO = #{pdNo}
+</select>
+
+<insert id="productInsert" parameterType="productForm">
+	INSERT INTO PRODUCT
+			(
+				PD_NO
+				,PD_NAME
+				,PD_GENDER
+				,PD_KIND
+				,PD_PRICE
+				,PD_SALE
+				,PD_VACCINE
+				,PD_BIRTH
+				,PD_IMG
+				,PD_REGDATE
+			
+			)
+		VALUES
+			(
+			PRODUCTSEQ.NEXTVAL
+			,#{pdName}
+			,#{pdGender}
+			,#{pdKind}
+			,#{pdPrice}
+			,#{pdSale}
+			,#{pdVaccine}
+			,#{pdBirth}
+			,#{pdImg}
+			,SYSDATE
+			)
+</insert>
+
 
 </mapper>

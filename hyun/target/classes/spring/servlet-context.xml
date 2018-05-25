@@ -45,4 +45,9 @@
 		</beans:property>
 	</beans:bean>
 	<!-- end tiles setting -->
+
+	<!-- FILE UPLOAD SETTING -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</beans:bean>
+
 </beans:beans>

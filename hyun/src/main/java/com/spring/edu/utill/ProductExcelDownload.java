@@ -61,7 +61,7 @@ public class ProductExcelDownload extends AbstractExcelView {
 			row.createCell(6).setCellValue(list.getPdVaccine());
 			row.createCell(7).setCellValue(list.getPdBirth());
 			row.createCell(8).setCellValue(list.getPdImg());
-			row.createCell(9).setCellValue(list.getPdRegdate());
+			row.createCell(9).setCellValue(new SimpleDateFormat("yyyy.MM.dd").format(list.getPdRegdate()));
 			rowIndex++;
 			
 		}
