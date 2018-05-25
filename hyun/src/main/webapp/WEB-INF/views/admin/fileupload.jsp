@@ -10,16 +10,13 @@
 </head>
 <body>
 
-  <h1>Please Select File to upload!!!</h1>
+  <h1>파일업로드</h1>
 
   <form method="POST" action="uploadFile" enctype="multipart/form-data">
-	File to upload: <input type="file" name="file"> 
-	<input type="submit" value="Upload">Press here to upload the file!
+	<input type="file" name="file"> 
+	<input type="submit" value="Upload">
   </form>
-	
-  <p>${message}</p>
-	
-	
+
   <c:choose>
     <c:when test="${not empty fileName}">
 	<img src="/images/${fileName}" /> 

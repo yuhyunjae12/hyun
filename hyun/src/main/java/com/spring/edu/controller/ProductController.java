@@ -3,6 +3,7 @@ package com.spring.edu.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -113,10 +114,9 @@ public class ProductController {
 	}
 	
 	 @RequestMapping(value = "/admin/uploadFile", method = RequestMethod.POST)
-	  public String uploadFile(@RequestParam("file") MultipartFile file,Model model) {
+	  public String uploadFile(@RequestParam("file") MultipartFile file,Model model) throws IOException {
 
 			String name = file.getOriginalFilename();
-			try {
 				byte[] bytes = file.getBytes();
 				
 				String rootPath = System.getProperty("catalina.home");  
@@ -129,12 +129,7 @@ public class ProductController {
 				stream.write(bytes);
 				stream.close();
 				
-				model.addAttribute("images",dir);
-				model.addAttribute("message", "업로드성공=" + name );
 				model.addAttribute("fileName",name);
-			} catch (Exception e) {
-				model.addAttribute("message", "파일 업로드 " + name + " => " + e.getMessage());
-			}
 
 		return "/admin/fileupload";
 	  }
