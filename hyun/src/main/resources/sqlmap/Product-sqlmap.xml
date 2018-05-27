@@ -64,5 +64,18 @@
 			)
 </insert>
 
+<update id="productUpdate" parameterType="productForm">
+	UPDATE 
+		PRODUCT SET 
+				PD_NAME=#{pdName}
+				,PD_GENDER=#{pdGender}
+				,PD_KIND=#{pdKind}
+				,PD_PRICE=#{pdPrice}
+				,PD_SALE=#{pdSale}
+				,PD_VACCINE=#{pdVaccine}
+				,PD_BIRTH=#{pdBirth}
+				,PD_IMG=#{pdImg}
+		WHERE PD_NO=#{pdNo}
+</update>
 
 </mapper>

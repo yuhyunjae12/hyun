@@ -30,6 +30,11 @@ public class ProductServiceImpl implements ProductService {
 	public ProductVo productDetail(int pdNo) {
 		return dao.productDetail(pdNo);
 	}
+
+	@Override
+	public int productUpdate(productForm productVo) {
+		return dao.productUpdate(productVo);
+	}
 	
 	
 

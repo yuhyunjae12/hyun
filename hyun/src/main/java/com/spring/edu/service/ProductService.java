@@ -10,5 +10,6 @@ public interface ProductService {
 	List<ProductVo> productList();
 	int productInsert(productForm productVo);
 	ProductVo productDetail(int pdNo);
+	int productUpdate(productForm productVo);
 
 }

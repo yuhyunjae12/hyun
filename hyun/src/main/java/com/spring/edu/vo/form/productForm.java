@@ -1,5 +1,6 @@
 package com.spring.edu.vo.form;
 
+import java.io.File;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
@@ -47,6 +48,5 @@ public class productForm {
 	
 	/*상품등록일*/
 	private Date pdRegdate;
-	
 
 }

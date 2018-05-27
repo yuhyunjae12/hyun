@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/admin/product">admin</a>
-<a href="/admin/upload">fileupload</a>
+<a href="/admin/productAdmin">admin</a>
 </body>
 </html>

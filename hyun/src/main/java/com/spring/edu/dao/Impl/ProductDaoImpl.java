@@ -33,6 +33,12 @@ public class ProductDaoImpl implements ProductDao {
 		ProductVo res = session.selectOne(namespace+"productDetail", pdNo);
 		return res;
 	}
+
+	@Override
+	public int productUpdate(productForm productVo) {
+		int res = session.update(namespace+"productUpdate", productVo);
+		return res;
+	}
 	
 	
 	

@@ -53,6 +53,8 @@
 				<form:errors path="pdBirth" />
 			<br>
 		<input type="file" name="productImg" id="productImg" />
+			<br/>
+				${imgError}
 			<br>
 				<input type="submit" value="등록">
 			<br>
