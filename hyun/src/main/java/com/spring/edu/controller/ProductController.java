@@ -68,7 +68,7 @@ public class ProductController {
 	public ModelAndView productAdminList(ModelAndView modelAndView) {
 		List<ProductVo> list =service.productList();
 		modelAndView.addObject("productList",list);
-		modelAndView.setViewName("/admin/productList");
+		modelAndView.setViewName("/admin/productAdminList");
 		return modelAndView;
 	}
 	
@@ -86,7 +86,7 @@ public class ProductController {
 	public ModelAndView productAdminDetail(ModelAndView modelAndView, @RequestParam("pdNo") int pdNo) {
 		ProductVo detail = service.productDetail(pdNo);
 		modelAndView.addObject("productDetail",detail);
-		modelAndView.setViewName("/admin/productDetail");
+		modelAndView.setViewName("/admin/productAdminDetail");
 		return modelAndView;
 	}
 	
@@ -159,7 +159,7 @@ public class ProductController {
 				e.getStackTrace();
 		}
 			/*문제가 없을시 상품페이지로이동*/
-			modelAndView.setViewName("redirect:/admin/product");
+			modelAndView.setViewName("redirect:/admin/productAdmin");
 		}else {
 			/*파일이 없다면 에러메세지와 함께 글쓰기폼으로 이동*/
 			modelAndView.addObject("imgError","이미지를 등록해주세요.");
@@ -233,7 +233,7 @@ public class ProductController {
 			e.printStackTrace();
 			
 		}
-			modelAndView.setViewName("redirect:/admin/product");
+			modelAndView.setViewName("redirect:/admin/productAdmin");
 		}else {
 			modelAndView.addObject("imgError","이미지를 등록해주세요.");
 			modelAndView.setViewName("/admin/productUpdate?pdNo="+productVo.getPdNo());
