@@ -118,7 +118,7 @@ public class ProductController {
 	  * @return
 	  */
 	@RequestMapping(value = "/admin/productWriterAfter", method=RequestMethod.POST)
-	public ModelAndView productWrite(@RequestParam("productImg") MultipartFile file
+	public ModelAndView productWriteAfter(@RequestParam("productImg") MultipartFile file
 	        ,HttpServletRequest request
 	        ,@ModelAttribute @Valid productForm productVo, BindingResult result){
 
