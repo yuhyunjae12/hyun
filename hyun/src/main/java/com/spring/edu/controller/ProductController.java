@@ -228,15 +228,21 @@ public class ProductController {
 			stream.write(bytes);
 			stream.close();
 			productVo.setPdImg(file.getOriginalFilename().toString());
-		    
+		    service.productUpdate(productVo);
 		} catch (IOException e) {
 			e.printStackTrace();
 			
 		}
 			modelAndView.setViewName("redirect:/admin/productAdmin");
 		}else {
-			modelAndView.addObject("imgError","이미지를 등록해주세요.");
-			modelAndView.setViewName("/admin/productUpdate?pdNo="+productVo.getPdNo());
+			if(productVo.getPdImg()==""){
+				modelAndView.addObject("imgError","이미지를 등록해주세요.");
+				modelAndView.setViewName("/admin/productUpdate?pdNo="+productVo.getPdNo());
+			}else {
+				service.productUpdate(productVo);
+				modelAndView.setViewName("redirect:/admin/productAdmin");
+			}
+
 		}
 
 	    return modelAndView;

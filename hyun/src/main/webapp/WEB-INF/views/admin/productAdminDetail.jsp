@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,43 +8,44 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table width="100%">
-				  <col width="10%">
-				  <col width="10%">
-				  <col width="10%">
-				  <col width="10%">
-				  <col width="10%">
-				  <col width="10%">
-				  <col width="10%">
-				  <col width="10%">
-				  <col width="10%">
-				  <col width="10%">
-				  <tr style="text-align: center;">
-				    <th>No</th>
-				    <th>상품명</th>
-				    <th>성별</th>
-				    <th>품종</th>
-				    <th>가격</th>
-				    <th>분양여부</th>
-				    <th>예방접종</th>
-				    <th>생년월일</th>
-				    <th>이미지</th>
-				    <th>등록일</th>
-				  </tr>
-					<tr>
-						<td>${productDetail.pdNo}</td>
-						<td>${productDetail.pdName}</td>
-						<td>${productDetail.pdGender}</td>
-						<td>${productDetail.pdKind}</td>
-						<td>${productDetail.pdPrice}</td>
-						<td>${productDetail.pdSale}</td>
-						<td>${productDetail.pdVaccine}</td>
-						<td>${productDetail.pdBirth}</td>
-						<td><img src="/images/${productDetail.pdImg}" /></td>
-						<td>${productDetail.pdRegdate}</td>
-					</tr>
-	</table>
-		<input type="button" class="btn btn-primary" value="수정" onclick="location.href='/admin/productUpdate?pdNo=${productDetail.pdNo}';">
-		<a class="btnnew noty" onclick="javascript:history.back();">취소</a>
+
+<div class="resume">
+    <header class="page-header">
+    <h1 class="page-title">상세 보기</h1>
+    <small> <i class="fa fa-clock-o"></i>등록일</small><br/>
+    <small> <i class="fa fa-clock-o"></i><fmt:formatDate value="${productDetail.pdRegdate}" pattern="yy-MM-dd"/></small>
+  </header>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading resume-heading">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="col-xs-12 col-sm-4">
+              <figure>
+                <img class="img-circle img-responsive" alt="" src="/images/${productDetail.pdImg}">
+              </figure>
+            </div>
+
+            <div class="col-xs-12 col-sm-8">
+              <ul class="list-group">
+                <li class="list-group-item">${productDetail.pdName}</li>
+                <li class="list-group-item">${productDetail.pdGender}</li>
+                <li class="list-group-item">${productDetail.pdKind}</li>
+                <li class="list-group-item"><fmt:formatNumber value="${productDetail.pdPrice}" pattern="#,###"/></li>
+                <li class="list-group-item">${productDetail.pdSale}</li>
+                <li class="list-group-item">${productDetail.pdVaccine}</li>
+                <li class="list-group-item">${productDetail.pdBirth}</li>
+              </ul>
+              <input type="button" class="btn btn-primary" value="수정" onclick="location.href='/admin/productUpdate?pdNo=${productDetail.pdNo}';">
+			  <a class="btnnew noty" onclick="javascript:history.back();">취소</a>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
 </body>
 </html>
