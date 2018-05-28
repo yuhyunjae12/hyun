@@ -33,13 +33,14 @@
 		<div class="row">
 			<div class="col-md-9">
 				<div class="products-heading">
-						<h2>ProductWrite</h2>
+						<h2>ProductUpdate</h2>
 				</div>	<!-- End of /.Products-heading -->
 
 <form:form modelAttribute="productForm" name="productForm" action="/admin/productUpdateAfter" method="post" enctype="multipart/form-data">
-
-	<fieldset>
 		<input name="pdNo" type="hidden" value="${productDetail.pdNo }">
+		<input name="pdImg" type="hidden" value="${productDetail.pdImg }">
+	<fieldset>
+
 		<!-- Text input-->
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="nama">이름</label>  
@@ -120,8 +121,6 @@
 		    <span class="help-block">${imgError}</span>  
 		  </div>
 		</div>
-		
-		<input name="pdImg" type="hidden" value="${productDetail.pdImg }">
 		
 		<!-- Button -->
 		<div class="form-group">
