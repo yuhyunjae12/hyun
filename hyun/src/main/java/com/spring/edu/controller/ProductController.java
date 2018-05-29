@@ -265,5 +265,12 @@ public class ProductController {
 		
 		return (View) new ProductExcelDownload();
 	}
+	
+	/*예제*/
+	@RequestMapping(value="/product/shop")
+	public ModelAndView productShop(ModelAndView modelAndView) {
+		modelAndView.setViewName("/product/shop");
+		return modelAndView;
+	}
 
 }

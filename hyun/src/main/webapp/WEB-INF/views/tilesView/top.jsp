@@ -200,7 +200,7 @@
 		        	<!-- <li class="active"><a href="/">HOME</a></li> -->
 		        	<li><a href="#">INTRODUCE</a></li>
 					<li><a href="/product/shop">SHOP</a></li>
-					<li><a href="#">REVIEW</a></li>
+					<li><a href="/review/listPaging">REVIEW</a></li>
 					<li><a href="#">QnA</a></li>
 					<li><a href="#">SKILL</a></li>
 					<!-- End of /.dropdown -->

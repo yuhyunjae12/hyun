@@ -45,4 +45,10 @@ public class UsersController {
 		
 	}
 	
+	@RequestMapping(value="/admin/userAdminList")
+	public ModelAndView usersAdminList(ModelAndView modelAndView) {
+		modelAndView.setViewName("admin/userAdminList.admin");
+		return modelAndView;
+	}
+	
 }

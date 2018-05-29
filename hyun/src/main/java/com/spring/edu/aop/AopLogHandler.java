@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 @Slf4j
 public class AopLogHandler {
-
+/*
     @Around("within(com.spring.edu.controller.*)")
     public Object logBefore(ProceedingJoinPoint point) throws Throwable {
 
@@ -36,5 +36,5 @@ public class AopLogHandler {
 
         return resultVal;
     }
-
+*/
 }
