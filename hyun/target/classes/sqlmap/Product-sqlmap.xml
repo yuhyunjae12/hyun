@@ -15,6 +15,7 @@
 		,PD_IMG
 		,PD_REGDATE
 		FROM PRODUCT
+		ORDER BY PD_NO DESC
 </select>
 
 
