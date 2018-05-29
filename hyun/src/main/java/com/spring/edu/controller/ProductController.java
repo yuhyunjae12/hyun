@@ -51,7 +51,7 @@ public class ProductController {
 	  */
 	@RequestMapping(value="/admin/main")
 	public ModelAndView adminMain(ModelAndView modelAndView) {
-		modelAndView.setViewName("/admin/main");
+		modelAndView.setViewName("admin/main.admin");
 		return modelAndView;
 	}
 	
@@ -68,7 +68,7 @@ public class ProductController {
 	public ModelAndView productAdminList(ModelAndView modelAndView) {
 		List<ProductVo> list =service.productList();
 		modelAndView.addObject("productList",list);
-		modelAndView.setViewName("/admin/productAdminList");
+		modelAndView.setViewName("admin/productAdminList.admin");
 		return modelAndView;
 	}
 	
@@ -86,7 +86,7 @@ public class ProductController {
 	public ModelAndView productAdminDetail(ModelAndView modelAndView, @RequestParam("pdNo") int pdNo) {
 		ProductVo detail = service.productDetail(pdNo);
 		modelAndView.addObject("productDetail",detail);
-		modelAndView.setViewName("/admin/productAdminDetail");
+		modelAndView.setViewName("admin/productAdminDetail.admin");
 		return modelAndView;
 	}
 	
@@ -101,7 +101,7 @@ public class ProductController {
 	  */
 	@RequestMapping(value="/admin/productWrite")
 	public ModelAndView productWrite(ModelAndView modelAndView) {
-		modelAndView.setViewName("/admin/productWrite");
+		modelAndView.setViewName("admin/productWrite.admin");
 		return modelAndView;
 	}
 	
@@ -128,7 +128,7 @@ public class ProductController {
 			 if (file.isEmpty()) {
 			 modelAndView.addObject("imgError","이미지를 등록해주세요.");
 			 }
-			 modelAndView.setViewName("/admin/productWrite");
+			 modelAndView.setViewName("admin/productWrite.admin");
 			 return modelAndView;
 		}
 		
@@ -163,7 +163,7 @@ public class ProductController {
 		}else {
 			/*파일이 없다면 에러메세지와 함께 글쓰기폼으로 이동*/
 			modelAndView.addObject("imgError","이미지를 등록해주세요.");
-			modelAndView.setViewName("/admin/productWrite");
+			modelAndView.setViewName("admin/productWrite.admin");
 		}
 		
 	    return modelAndView;
@@ -183,7 +183,7 @@ public class ProductController {
 	public ModelAndView productUpdate(ModelAndView modelAndView, @RequestParam("pdNo") int pdNo) {
 		ProductVo detail = service.productDetail(pdNo);
 		modelAndView.addObject("productDetail",detail);
-		modelAndView.setViewName("/admin/productUpdate");
+		modelAndView.setViewName("admin/productUpdate.admin");
 		return modelAndView;
 	}
 	
@@ -209,7 +209,7 @@ public class ProductController {
 			 if (file.isEmpty()) {
 				 modelAndView.addObject("imgError","이미지를 등록해주세요.");
 				 }
-			 modelAndView.setViewName("/admin/productUpdate?pdNo="+productVo.getPdNo());
+			 modelAndView.setViewName("admin/productUpdate.admin?pdNo="+productVo.getPdNo());
 			 return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView();
@@ -233,14 +233,14 @@ public class ProductController {
 			e.printStackTrace();
 			
 		}
-			modelAndView.setViewName("redirect:/admin/productAdmin");
+			modelAndView.setViewName("redirect:admin/productAdmin.admin");
 		}else {
 			if(productVo.getPdImg()==""){
 				modelAndView.addObject("imgError","이미지를 등록해주세요.");
-				modelAndView.setViewName("/admin/productUpdate?pdNo="+productVo.getPdNo());
+				modelAndView.setViewName("admin/productUpdate.admin?pdNo="+productVo.getPdNo());
 			}else {
 				service.productUpdate(productVo);
-				modelAndView.setViewName("redirect:/admin/productAdmin");
+				modelAndView.setViewName("redirect:admin/productAdmin.admin");
 			}
 
 		}
