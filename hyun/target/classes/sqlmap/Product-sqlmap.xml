@@ -79,4 +79,41 @@
 		WHERE PD_NO=#{pdNo}
 </update>
 
+<select id="productCount" resultType="int">
+	<![CDATA[
+	SELECT 
+		COUNT(pd_no)
+	FROM
+		PRODUCT
+	WHERE
+		pd_no > 0	
+	]]>
+</select>
+
+<select id="productPageing" resultType="ProductVo">
+	<![CDATA[
+	SELECT 
+	B.RNUM, B.*
+	FROM(
+    	 SELECT 
+    	 ROWNUM AS RNUM, A.*
+    	 FROM(
+         	  SELECT 
+		         PD_NO
+				,PD_NAME
+				,PD_GENDER
+				,PD_KIND
+				,PD_PRICE
+				,PD_SALE
+				,PD_VACCINE
+				,PD_BIRTH
+				,PD_IMG
+				,PD_REGDATE
+         	  FROM PRODUCT
+              ORDER BY PD_NO DESC, PD_REGDATE DESC)A
+         WHERE ROWNUM <=#{page}*#{perPageNum})B
+    WHERE B.RNUM >=#{page}*10-9
+	]]>
+</select>
+
 </mapper>

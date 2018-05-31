@@ -26,7 +26,7 @@ public class ReviewController {
 	
 	/*게시글 페이징 적용*/
 	@RequestMapping(value="/listPaging", method=RequestMethod.GET)
-	public void listAll(@ModelAttribute("cri")BoardCriteria cri, Model model)throws Exception{
+	public String listAll(@ModelAttribute("cri")BoardCriteria cri, Model model)throws Exception{
 		logger.info(cri.toString());
 		logger.info("리스트가 모두 보여짐..페이징도....");
 		model.addAttribute("listAll", service.listPaging(cri));
@@ -36,15 +36,16 @@ public class ReviewController {
 		paging.setTotalCount(service.countPaging(cri));
 		
 		model.addAttribute("paging", paging);
+		return "/review/listPaging";
 	}
 	
-	/*게시글  입력 폼*/
+/*	게시글  입력 폼
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public void registerForm(ReviewVo vo, Model model)throws Exception{
 		logger.info("입력 폼...........");
 	}
 	
-	/*게시글 입력 완료*/
+	게시글 입력 완료
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String regist(ReviewVo vo, RedirectAttributes rttr)throws Exception{
 		logger.info("입력");
@@ -55,19 +56,19 @@ public class ReviewController {
 		return "redirect:/review/listPaging";
 	}
 	
-	/*게시글 조회*/
+	게시글 조회
 	@RequestMapping(value="/read", method=RequestMethod.GET)
 	public void read(@RequestParam("br_no")int brNo, @ModelAttribute("cri") BoardCriteria cri, Model model)throws Exception{
 		model.addAttribute("read",service.read(brNo));
 	}
 	
-	/*게시글 수정 폼*/
+	게시글 수정 폼
 	@RequestMapping(value="/update",method=RequestMethod.GET)
 	public void updateForm(int brNo, @ModelAttribute("cri") BoardCriteria cri, Model model)throws Exception {
 		model.addAttribute("update", service.read(brNo));
 	}
 	
-	/*게시글 수정 완료*/
+	게시글 수정 완료
 	@RequestMapping(value="/read", method=RequestMethod.POST)
 	public String update(ReviewVo vo, BoardCriteria cri, RedirectAttributes rttr)throws Exception{
 		logger.info("수정");
@@ -80,7 +81,7 @@ public class ReviewController {
 		return "redirect:/review/listPaging";
 	}
 	
-	/*게시글 삭제(완전 삭제가 아닌 삭제여부를(brEn) 'N'으로 변경*/
+	게시글 삭제(완전 삭제가 아닌 삭제여부를(brEn) 'N'으로 변경
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public String delete(int brNo, @ModelAttribute("cri") BoardCriteria cri, RedirectAttributes rttr)throws Exception{
 		logger.info("삭제?");
@@ -90,5 +91,5 @@ public class ReviewController {
 		rttr.addAttribute("perPageNum",cri.getPerPageNum());
 		rttr.addFlashAttribute("msg","success");
 		return "redirect:/review/listPaging";
-	}
+	}*/
 }

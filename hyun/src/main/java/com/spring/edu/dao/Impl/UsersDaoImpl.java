@@ -1,11 +1,14 @@
 package com.spring.edu.dao.Impl;
 
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.edu.dao.UsersDao;
+import com.spring.edu.vo.UsersVo;
 import com.spring.edu.vo.form.UsersForm;
 
 @Repository
@@ -21,5 +24,14 @@ public class UsersDaoImpl implements UsersDao {
 		int usersInsert = sqlSession.insert(nameSpace + "UsersInsert", usersVo);
 		return usersInsert;
 	}
+
+
+	@Override
+	public List<UsersVo> usersList() {
+		List<UsersVo> res =sqlSession.selectList(nameSpace+"UsersList");
+		return res;
+	}
+	
+	
 
 }

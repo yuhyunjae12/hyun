@@ -20,7 +20,7 @@ public interface ReviewService {
 	public void delete(int brNo)throws Exception;
 	
 	/*페이지 번호에 의한 게시글*/
-	public List<ReviewVo> listPaging(BoardCriteria cri) throws Exception;
+	public List<ReviewVo> listPaging(BoardCriteria cri)throws Exception;
 	
 	/*전체 게시글 반환*/
 	public int countPaging(BoardCriteria cri)throws Exception;

@@ -22,6 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
 import com.spring.edu.service.ProductService;
+import com.spring.edu.utill.Criteria;
+import com.spring.edu.utill.Paging;
 import com.spring.edu.utill.ProductExcelDownload;
 import com.spring.edu.vo.ProductVo;
 import com.spring.edu.vo.form.productForm;
@@ -59,15 +61,19 @@ public class ProductController {
 	  * @Method Name : productAdminList
 	  * @작성일 : 2018. 5. 27.
 	  * @작성자 : 유현재
-	  * @변경이력 : 
+	  * @변경이력 : 페이징 추가
 	  * @Method 설명 : 상품 리스트
 	  * @param modelAndView
 	  * @return
 	  */
 	@RequestMapping(value="/admin/productAdmin")
-	public ModelAndView productAdminList(ModelAndView modelAndView) {
-		List<ProductVo> list =service.productList();
-		modelAndView.addObject("productList",list);
+	public ModelAndView productAdminList(@ModelAttribute("cri")Criteria cri, ModelAndView modelAndView) {
+		modelAndView.addObject("productList", service.productPageing(cri));
+		Paging paging=new Paging();
+		paging.setCri(cri);
+		paging.setTotalCount(service.productCount(cri));
+		
+		modelAndView.addObject("paging", paging);
 		modelAndView.setViewName("admin/productAdminList.admin");
 		return modelAndView;
 	}
@@ -272,5 +278,5 @@ public class ProductController {
 		modelAndView.setViewName("/product/shop");
 		return modelAndView;
 	}
-
+	
 }

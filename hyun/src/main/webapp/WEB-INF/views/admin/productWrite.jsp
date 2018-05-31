@@ -18,12 +18,6 @@
 					<h1>ProductWrite</h1>
 					<p>WriteForm</p>
 				</div>	<!-- End of /.col-md-4 -->
-				<div class="col-md-8 hidden-xs">
-					<ol class="breadcrumb pull-right">
-					  	<li><a href="/admin/main">admin</a></li>
-					  	<li class="active">ProductWriteForm</li>
-					</ol>
-				</div>	<!-- End of /.col-md-8 -->
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of /#Topic-header -->
@@ -31,9 +25,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
-				<div class="products-heading">
-						<h2>ProductWrite</h2>
-				</div>	<!-- End of /.Products-heading -->
+
 <form:form modelAttribute="productForm" name="productForm" action="/admin/productWriterAfter" method="post" enctype="multipart/form-data">
 
 	<fieldset>

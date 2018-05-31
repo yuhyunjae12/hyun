@@ -38,12 +38,12 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public List<ReviewVo> listPaging(BoardCriteria cri) throws Exception {
+	public List<ReviewVo> listPaging(BoardCriteria cri)throws Exception{
 		return session.selectList(namespace+"listPaging",cri);
 	}
 
 	@Override
-	public int countPaging(BoardCriteria cri) throws Exception {
+	public int countPaging(BoardCriteria cri)throws Exception{
 		return session.selectOne(namespace+"countPaging",cri);
 	}
 	

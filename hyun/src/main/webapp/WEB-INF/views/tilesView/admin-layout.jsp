@@ -19,7 +19,6 @@
     <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/resources/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
     <link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
-    <link href="/resources/vendor/morrisjs/morris.css" rel="stylesheet">
     <link href="/resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
   	<!-- JS -->
@@ -27,8 +26,6 @@
     <script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="/resources/vendor/metisMenu/metisMenu.min.js"></script>
     <script src="/resources/vendor/raphael/raphael.min.js"></script>
-    <script src="/resources/vendor/morrisjs/morris.min.js"></script>
-    <script src="/resources/data/morris-data.js"></script>
     <script src="/resources/dist/js/sb-admin-2.js"></script>
 </head>
 

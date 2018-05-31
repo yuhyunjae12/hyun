@@ -17,12 +17,6 @@
 					<h1>ProductAdminList</h1>
 					<p>AdminProducts</p>
 				</div>	<!-- End of /.col-md-4 -->
-				<div class="col-md-8 hidden-xs">
-					<ol class="breadcrumb pull-right">
-					  	<li><a href="/admin/main">admin</a></li>
-					  	<li class="active">ProductAdminList</li>
-					</ol>
-				</div>	<!-- End of /.col-md-8 -->
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of /#Topic-header -->
@@ -31,9 +25,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
-				<div class="products-heading">
-						<h2>ProductList</h2>
-				</div>	<!-- End of /.Products-heading -->
 			<table width="100%" class="table table-condensed table-hover">
 						  <col width="5%">
 						  <col width="10%">
@@ -83,16 +74,31 @@
 			</table>
 			<input type="button" class="btn btn-success" value="상품등록" onclick="location.href='/admin/productWrite';">
 			<a href="/admin/product/productExcelDownload"><img width="22px" height="22px" src="/resources/images/excellogo.png" />엑셀 다운로드</a>	
-			<div class="pagination-bottom">
-				<ul class="pagination">
-				  	<li class="disabled"><a href="#">&laquo;</a></li>
-				  	<li class="active"><a href="#">1 <span class="sr-only"></span></a></li>
-				  	<li><a href="#">2</a></li>
-				  	<li><a href="#">3</a></li>
-				  	<li><a href="#">4</a></li>
-				  	<li><a href="#">»</a></li>
-				</ul>	<!-- End of /.pagination -->
+			<!-- 리스트 페이징 -->
+				<div class="ly12-tblTextC">
+					<ul class="pagination">
+				    	<c:if test="${paging.prev }">
+					    	<li class="page-item">
+					    		<a class="page-link" href="/admin/productAdmin${paging.makeQuery(paging.startPage - 1) }">이전</a>
+					    	</li>
+				    	</c:if>
+				    	
+				    	<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="idx">
+					    	<li 
+					    		<c:out value="${paging.cri.page == idx?'class=active':'' }"/>>
+					    			<a class="page-link" href="/admin/productAdmin${paging.makeQuery(idx)}">
+					    		${idx } <span class="sr-only">(current)</span></a>
+					    	</li>
+					    </c:forEach>
+					    
+					    <c:if test="${paging.next && paging.endPage > 0 }">
+					    	<li>
+					    		<a class="page-link" href="/admin/productAdmin${paging.makeQuery(paging.endPage +1) }">다음</a>
+					    	</li>
+					    </c:if>
+				  	</ul>
 				</div>
+				<!--// 리스트 페이징 -->
 				</div>
 			</div>
 		</div>	<!-- End of /.container -->

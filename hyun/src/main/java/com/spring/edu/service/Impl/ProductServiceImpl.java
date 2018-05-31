@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.edu.dao.ProductDao;
 import com.spring.edu.service.ProductService;
+import com.spring.edu.utill.Criteria;
 import com.spring.edu.vo.ProductVo;
 import com.spring.edu.vo.form.productForm;
 
@@ -34,6 +35,16 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int productUpdate(productForm productVo) {
 		return dao.productUpdate(productVo);
+	}
+
+	@Override
+	public int productCount(Criteria cri) {
+		return dao.productCount(cri);
+	}
+
+	@Override
+	public List<ProductVo> productPageing(Criteria cri) {
+		return dao.productPageing(cri);
 	}
 	
 	

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.edu.dao.ProductDao;
+import com.spring.edu.utill.Criteria;
 import com.spring.edu.vo.ProductVo;
 import com.spring.edu.vo.form.productForm;
 @Repository
@@ -37,6 +38,18 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public int productUpdate(productForm productVo) {
 		int res = session.update(namespace+"productUpdate", productVo);
+		return res;
+	}
+
+	@Override
+	public int productCount(Criteria cri) {
+		int res =session.selectOne(namespace+"productCount",cri);
+		return res;
+	}
+
+	@Override
+	public List<ProductVo> productPageing(Criteria cri) {
+		List<ProductVo> res =session.selectList(namespace+"productPageing",cri);
 		return res;
 	}
 	

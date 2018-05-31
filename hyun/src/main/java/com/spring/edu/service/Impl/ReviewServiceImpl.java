@@ -39,12 +39,12 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	
 	@Override
-	public List<ReviewVo> listPaging(BoardCriteria cri) throws Exception {
+	public List<ReviewVo> listPaging(BoardCriteria cri)throws Exception{
 		return dao.listPaging(cri);
 	}
 
 	@Override
-	public int countPaging(BoardCriteria cri) throws Exception {
+	public int countPaging(BoardCriteria cri)throws Exception{
 		return dao.countPaging(cri);
 	}
 
