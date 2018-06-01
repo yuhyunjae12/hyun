@@ -11,6 +11,5 @@
 <br>
 <a href="/admin/userAdminList">adminUserList</a>
 <br>
-<a href="/admin/productAdminPageing">Pageing</a>
 </body>
 </html>
