@@ -34,6 +34,7 @@ import com.spring.edu.vo.form.productForm;
   * @변경이력 :
   * @프로그램 설명 : 상품 컨트롤러
   */
+
 @Controller
 public class ProductController {
 
@@ -248,6 +249,7 @@ public class ProductController {
 	    return modelAndView;
 	}
 	
+	
 	/**
 	  * @Method Name : productExcelDownload
 	  * @작성일 : 2018. 5. 27.
@@ -265,5 +267,39 @@ public class ProductController {
 		
 		return (View) new ProductExcelDownload();
 	}
+	
+	/**
+	  * @Method Name : shop
+	  * @작성일 : 2018. 5. 28.
+	  * @작성자 : 이열
+	  * @변경이력 : 
+	  * @Method 설명 :
+	  * @param modelAndView
+	  * @return
+	  */
+	@RequestMapping(value="/product/shop")
+	public ModelAndView shop(ModelAndView modelAndView) {
+		modelAndView.setViewName("product/shop");
+		return modelAndView;
+	}
+	/**
+	  * @Method Name : producSchedule
+	  * @작성일 : 2018. 6. 4.
+	  * @작성자 : 이열
+	  * @변경이력 : 
+	  * @Method 설명 :
+	  * @param modelAndView
+	  * @return
+	  */
+	
+	@RequestMapping(value="/admin/productSchedule")
+	public ModelAndView productSchedule(ModelAndView modelAndView) {
+		List<ProductVo> list =service.productList();
+		modelAndView.addObject("userList",list);
+		modelAndView.setViewName("admin/productSchedule.admin");
+		return modelAndView;
+	}
+	
 
+	
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="schedule">
+
+<select id="scheduList" resultType="ScheduleVo">
+	SELECT
+		SCHE_NO
+		,UR_ID
+		,UR_PHONE
+		,PD_NO
+		,PD_NAME
+		,PD_SALE
+		,PD_SALEDATE
+		,PD_SALETIME
+		,PD_SALESPACE
+		,PD_SALECONTENT
+		FROM SCHEDULE
+</select>
+
+</mapper>

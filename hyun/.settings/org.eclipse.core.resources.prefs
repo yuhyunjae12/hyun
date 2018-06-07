@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/spring/edu=UTF-8
 encoding//src/main/java/com/spring/edu/controller/UsersController.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/tilesView=UTF-8
+encoding//src/main/webapp/WEB-INF/views/tilesView/admin-side.jsp=UTF-8
+encoding/<project>=UTF-8
