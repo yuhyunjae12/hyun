@@ -1,6 +1,5 @@
 package com.spring.edu.vo.form;
 
-import java.io.File;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;

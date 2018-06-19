@@ -22,4 +22,20 @@
 		ORDER BY ur_no DESC
 </select>
 
+<select id="UsersLogin" resultType="UsersVo">
+	SELECT
+		*
+		FROM USERS
+		WHERE ur_id = #{urId}
+		AND ur_pw = #{urPw}
+</select>
+
+<select id="UserCheck" resultType="Integer">
+	SELECT
+		COUNT(*)
+		FROM USERS
+		WHERE ur_id = #{urId}
+		AND ur_pw = #{urPw}
+</select>
+
 </mapper>

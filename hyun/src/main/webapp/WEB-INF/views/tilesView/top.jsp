@@ -14,10 +14,15 @@
 				</div>
 				<div class="col-md-3 clearfix">
 					<ul class="login-cart">
-						<li>
+				<c:choose>
+					<c:when test="${empty login.urId}">
+							<li>
 							<a data-toggle="modal" data-target="#myModal" href="#">
 							<i class="fa fa-user"></i>
 								Login
+							</a>
+							<a href="/users/logout">
+								logout
 							</a>
 							<a href="/users/usersInsert">
 								regist
@@ -26,6 +31,37 @@
 								admin
 							</a>
 						</li>
+					</c:when>
+							<c:otherwise>
+						  	<li>
+							<a>
+								${login.urId }
+							</a>
+							<a href="/users/logout">
+								logout
+							</a>
+							<a href="/admin/main">
+								admin
+							</a>
+						  	</c:otherwise>
+				</c:choose>
+						<%-- <li>
+							<a data-toggle="modal" data-target="#myModal" href="#">
+							<i class="fa fa-user"></i>
+								Login
+			      				${login.urId }
+							</a>
+							<a href="/users/logout">
+								logout
+							</a>
+							<a href="/users/usersInsert">
+								regist
+							</a>
+							<a href="/admin/main">
+								admin
+							</a>
+						</li> --%>
+						
 <!-- 						<li>
 							<div class="cart dropdown">
 						  		<a data-toggle="dropdown" href="#"><i class="fa fa-shopping-cart"></i>Cart(1)</a>
@@ -121,7 +157,28 @@
 	</section> -->  <!-- End of /Section -->
 		<!-- MODAL Start
     	================================================== -->
+<script type="text/javascript">
+$(document).ready(function (){
+	$('#save').click(function(){
+		var formData =$('#login_form').serialize();
+		$.ajax({
+			type:'POST',
+			url:'/users/login',
+			data: formData,
+			success: function (data) {
+	            if (data.UrYn) {
+	            	alert("로그인 되었습니다");
+	                location.reload();
+	            } else {
+	            	$("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");
+	            }    
+	        }
+		});
+	});
+	
+});
 
+</script>
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 		    	<div class="modal-content">
@@ -130,24 +187,26 @@
 		        		<h4 class="modal-title" id="myModalLabel">로그인</h4>
 		      		</div>
 			      	<div class="modal-body clearfix">
-			      		<form action="" method="post" id="login_form" class="std">
+			      		<%-- <form action="/users/login" method="post" id="login_form" class="std"> --%>
+			      		<form id="login_form" class="std">
 							<fieldset>
 								<h3>로그인</h3>
 								<div class="form_content clearfix">
 									<p class="text">
-									<label for="email">E-mail address</label>
-										<span><input placeholder="이메일을 입력해주세요" type="text" id="email" name="email" value="" class="account_input"></span>
+									<label for="email">아이디</label>
+									<span><input placeholder="아이디를 입력해주세요" type="text" id="email" name="urId" value="" class="account_input"></span>
 									</p>
 									<p class="text">
-									<label for="passwd">Password</label>
-										<span><input placeholder="비밀번호를 입력해주세요" type="password" id="passwd" name="passwd" value="" class="account_input"></span>
+									<label for="passwd">비밀번호</label>
+										<span><input placeholder="비밀번호를 입력해주세요" type="password" id="passwd" name="urPw" value="" class="account_input"></span>
 									</p>
 									<p class="lost_password">
 										<a href="#popab-password-reset" class="popab-password-link">비밀 번호 찾기</a>
 									</p>
 									<p class="submit">
-										<button class="btn btn-success">Log in</button>
+										<button type="button" id="save" class="btn btn-success">Log in</button>
 									</p>
+									<div id="message"></div>
 								</div>
 							</fieldset>
 						</form>

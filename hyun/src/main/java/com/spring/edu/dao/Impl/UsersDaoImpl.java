@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.edu.dao.UsersDao;
 import com.spring.edu.vo.UsersVo;
 import com.spring.edu.vo.form.UsersForm;
+import com.spring.edu.vo.form.UsersLogin;
 
 @Repository
 public class UsersDaoImpl implements UsersDao {
@@ -29,6 +30,20 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public List<UsersVo> usersList() {
 		List<UsersVo> res =sqlSession.selectList(nameSpace+"UsersList");
+		return res;
+	}
+
+
+	@Override
+	public UsersVo login(UsersLogin usersVo) {
+		UsersVo res = sqlSession.selectOne(nameSpace+"UsersLogin", usersVo);
+		return res;
+	}
+
+
+	@Override
+	public int LoginCheck(UsersLogin usersVo) {
+		int res =sqlSession.selectOne(nameSpace+"UserCheck", usersVo);
 		return res;
 	}
 	

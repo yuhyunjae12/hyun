@@ -125,7 +125,6 @@ public class ProductController {
 	  */
 	@RequestMapping(value = "/admin/productWriterAfter", method=RequestMethod.POST)
 	public ModelAndView productWriteAfter(@RequestParam("productImg") MultipartFile file
-	        ,HttpServletRequest request
 	        ,@ModelAttribute @Valid productForm productVo, BindingResult result){
 
 		/*vo에 validation 설정한것과 다를때 에러 메세지와함께 글쓰기폼으로 이동*/

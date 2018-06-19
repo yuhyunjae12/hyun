@@ -5,6 +5,12 @@ import lombok.Data;
 @Data
 public class Criteria {
 
+	/*검색 조건*/
+	private String searchType;
+	
+	/*검색 키워드*/
+	private String keyword;
+	
 	/*현재 조회하는 페이지 번호*/
 	private int page;
 	
