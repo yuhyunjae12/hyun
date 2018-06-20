@@ -17,7 +17,6 @@ $(function() {
 			data : "column=UR_ID&val=" + inputed,
 			url : "/users/UdundantInspection",
 			success : function(data) {
-				alert(data)
 				if (inputed == "" && data == '0') {
 					$(".signupbtn").prop("disabled", true);
 					$(".signupbtn").css("background-color", "#aaaaaa");
@@ -96,7 +95,6 @@ $(function() {
 	$("#urEmail").focusout(function() {
 				var emailCo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
 				if (emailCo.test($("#urEmail").val())) {
-					alert(emailCo.test($("#urEmail").val()))
 					$("#urEamil").css("background-color", "#B0F6AC");
 				} else {
 					$("#urEmail").css("background-color", "#FFCECE");
@@ -108,7 +106,6 @@ $(function() {
 					data : "column=UR_EMAIL&val=" + inputed,
 					url : "/users/UdundantInspection",
 					success : function(data) {
-						alert(data);
 						if (inputed == "" && data == '0') {
 							$(".signupbtn").prop("disabled",true);
 							$(".signupbtn").css("background-color","#aaaaaa");
