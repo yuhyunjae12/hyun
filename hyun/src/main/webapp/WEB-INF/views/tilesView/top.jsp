@@ -107,7 +107,9 @@ $(document).ready(function (){
 							<fieldset>
 								<h3>회원가입</h3>
 								<div class="form_content clearfix">
-									<h4>지금 바로 회원이 되어보세요!</h4>
+								<br/><br/>
+									<h4>바로 회원이 되어보세요 !</h4>
+								<br/><br/>
 									<p class="submit">
 										<a href="/users/usersInsert" class="btn btn-primary">회원 가입</a>
 									</p>
