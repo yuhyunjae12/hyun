@@ -1,19 +1,23 @@
 package com.spring.edu.controller;
 
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,25 +26,45 @@ import com.spring.edu.vo.UsersVo;
 import com.spring.edu.vo.form.UsersForm;
 import com.spring.edu.vo.form.UsersLogin;
 
+/**
+  * @FileName : UsersController.java
+  * @Project : hyun
+  * @Date : 2018. 6. 20. 
+  * @작성자 : 유현재
+  * @변경이력 :
+  * @프로그램 설명 : 회원 컨트롤러
+  */
 @Controller
 public class UsersController {
 	
-//	@RequestMapping("/")
-//	public ModelAndView main(Model model, ModelAndView modelAndView) {
-//		System.out.println(">>>>>>>>>>>>>>>>>>>>>메인페이지접속");
-//		modelAndView.setViewName("index");
-//		
-//		return modelAndView;
-//	}
 	@Autowired
 	private UsersService service;
 	
+	/**
+	  * @Method Name : usersInsert
+	  * @작성일 : 2018. 6. 20.
+	  * @작성자 : 유현재
+	  * @변경이력 : 
+	  * @Method 설명 : 회원가입 폼
+	  * @param modelAndView
+	  * @return
+	  */
 	@RequestMapping(value="/users/usersInsert")
 	public ModelAndView usersInsert(ModelAndView modelAndView) {
 		modelAndView.setViewName("/users/usersInsert");
 		return modelAndView;
 	}
 	
+	/**
+	  * @Method Name : usersInsertAfter
+	  * @작성일 : 2018. 6. 20.
+	  * @작성자 : 유현재
+	  * @변경이력 : 
+	  * @Method 설명 : 회원가입
+	  * @param usersVo
+	  * @param result
+	  * @return
+	  */
 	@RequestMapping(value="/users/insertAfter",method=RequestMethod.POST)
 	public ModelAndView usersInsertAfter(@ModelAttribute @Valid UsersForm usersVo, BindingResult result) {
 		if(result.hasErrors()) {
@@ -49,10 +73,19 @@ public class UsersController {
 			 return modelAndView;
 		}
 		service.usersInsert(usersVo);
-		return new ModelAndView("redirect:/users/usersInsert");
+		return new ModelAndView("redirect:/");
 		
 	}
 	
+	/**
+	  * @Method Name : usersAdminList
+	  * @작성일 : 2018. 6. 20.
+	  * @작성자 : 유현재
+	  * @변경이력 : 
+	  * @Method 설명 : 회원 리스트
+	  * @param modelAndView
+	  * @return
+	  */
 	@RequestMapping(value="/admin/userAdminList")
 	public ModelAndView usersAdminList(ModelAndView modelAndView) {
 		List<UsersVo> list = service.usersList();
@@ -62,6 +95,16 @@ public class UsersController {
 	}
 	
 	
+    /**
+      * @Method Name : UsersLogin
+      * @작성일 : 2018. 6. 20.
+      * @작성자 : 유현재
+      * @변경이력 : 
+      * @Method 설명 : 로그인
+      * @param session
+      * @param usersVo
+      * @return
+      */
     @RequestMapping(value="/users/login",method=RequestMethod.POST)
     @ResponseBody
     public Map<String, Boolean> UsersLogin(HttpSession session, UsersLogin usersVo){
@@ -90,12 +133,34 @@ public class UsersController {
         
         
     }
-    // 로그아웃 하는 부분
+    
+    /**
+      * @Method Name : logout
+      * @작성일 : 2018. 6. 20.
+      * @작성자 : 유현재
+      * @변경이력 : 로그아웃
+      * @Method 설명 :
+      * @param session
+      * @return
+      */
     @RequestMapping(value="/users/logout")
     public String logout(HttpSession session) {
         session.invalidate(); // 세션 전체를 날려버림
 //      session.removeAttribute("login"); // 하나씩 하려면 이렇게 해도 됨.
         return "redirect:/"; 
     }
-	
+    
+    @RequestMapping(value="/users/juso")
+    public String logout() {
+        return "/users/jusoPopup"; 
+    }
+    
+	@RequestMapping(value = "/users/UdundantInspection")
+	@ResponseBody
+	public int UserUdundantInspection(Model model, @RequestParam("column") String column,
+			@RequestParam("val") String val, HttpServletResponse response) {
+		System.out.println(val);
+		int urNo = service.UdundantInspection(column, val);
+		return urNo;
+	}
 }

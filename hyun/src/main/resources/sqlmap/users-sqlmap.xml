@@ -2,8 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
 
-<insert id="UsersInsert">
-
+<insert id="UsersInsert" parameterType="UsersForm">
+	INSERT 
+		INTO 
+		USERS
+		(
+		UR_NO
+		,UR_ID
+		,UR_PW
+		,UR_PHONE
+		,UR_EMAIL
+		,UR_ADDR
+		,UR_REGDATE
+		,UR_DROPDATE
+		,UR_GRADE
+		,UR_YN
+		)
+		VALUES 
+		(
+		usersseq.nextval
+		,#{urId}
+		,#{urPw}
+		,#{urPhone}
+		,#{urEmail}
+		,#{urAddr}
+		,SYSDATE
+		,null
+		,'USER'
+		,'Y'
+		)
 </insert>
 
 <select id="UsersList" resultType="UsersVo">
@@ -38,4 +65,11 @@
 		AND ur_pw = #{urPw}
 </select>
 
+<select id="UdundantInspection" parameterType="map" resultType="int">
+	SELECT 
+		count(*) 
+		FROM USERS 
+		WHERE ${column} = #{val}
+
+</select>
 </mapper>

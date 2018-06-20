@@ -1,7 +1,9 @@
 package com.spring.edu.service.Impl;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +40,12 @@ public class UsersServiceImpl implements UsersService {
 		return dao.LoginCheck(usersVo);
 	}
 	
-	
+	@Override
+	public int UdundantInspection(String column, String val) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("column", column);
+		map.put("val", val);
+		return dao.UdundantInspection(map);
+	}
 	
 }

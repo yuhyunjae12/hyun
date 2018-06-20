@@ -2,6 +2,7 @@ package com.spring.edu.dao.Impl;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,11 @@ public class UsersDaoImpl implements UsersDao {
 		return res;
 	}
 	
-	
+	@Override
+	public int UdundantInspection(Map<String,String> map) {
+		System.out.println("dao"+map);
+		int res = sqlSession.selectOne(nameSpace+"UdundantInspection", map);
+		return res;
+	}
 
 }

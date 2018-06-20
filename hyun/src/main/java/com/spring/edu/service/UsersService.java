@@ -13,4 +13,5 @@ public interface UsersService {
 	List<UsersVo> usersList();
 	UsersVo login(UsersLogin usersVo);
 	int LoginCheck(UsersLogin usersVo);
+	int UdundantInspection(String column, String val);
 }
