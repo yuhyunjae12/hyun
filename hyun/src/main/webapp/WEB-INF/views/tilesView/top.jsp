@@ -43,6 +43,9 @@
 							<a href="/admin/main">
 								admin
 							</a>
+							<a href="#">
+								myPage
+							</a>
 						  	</c:otherwise>
 				</c:choose>
 					</ul>
