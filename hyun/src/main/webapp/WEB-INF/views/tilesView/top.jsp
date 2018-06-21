@@ -34,7 +34,8 @@
 					</c:when>
 							<c:otherwise>
 						  	<li>
-							<a>
+						  	<a data-toggle="modal" data-target="#myModal" href="#">
+							<i class="fa fa-user"></i>
 								${login.urId }
 							</a>
 							<a href="/users/logout">
