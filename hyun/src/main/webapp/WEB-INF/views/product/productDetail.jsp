@@ -206,6 +206,9 @@ $(function() {
 				</div>
 			</div>
 			<br>
+			<img src="/images/${productDetail.pdImg}" alt="" />
+			<img src="/resources/images/test1.jpg" alt="" />
+			<img src="/images/${productDetail.pdImg}" alt="" />
 		</div>
 	</div>
   </body>
