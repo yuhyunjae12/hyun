@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.edu.service.UsersService;
+import com.spring.edu.utill.Criteria;
+import com.spring.edu.utill.Paging;
 import com.spring.edu.vo.UsersVo;
 import com.spring.edu.vo.form.UsersForm;
 import com.spring.edu.vo.form.UsersLogin;
@@ -87,9 +89,12 @@ public class UsersController {
 	  * @return
 	  */
 	@RequestMapping(value="/admin/userAdminList")
-	public ModelAndView usersAdminList(ModelAndView modelAndView) {
-		List<UsersVo> list = service.usersList();
-		modelAndView.addObject("userList",list);
+	public ModelAndView usersAdminList(@ModelAttribute("cri")Criteria cri, ModelAndView modelAndView) {
+		modelAndView.addObject("userList", service.usersList(cri));
+		Paging paging=new Paging();
+		paging.setCri(cri);
+		paging.setTotalCount(service.usersCount());
+		modelAndView.addObject("paging", paging);
 		modelAndView.setViewName("admin/userAdminList.admin");
 		return modelAndView;
 	}

@@ -28,8 +28,6 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
             return false; // 더이상 컨트롤러 요청으로 가지 않도록 false로 반환함
         }
         
-        log.info("앙 기모띠 {}", obj.toString()); // 이게 끝이라능
-        
         // preHandle의 return은 컨트롤러 요청 uri로 가도 되냐 안되냐를 허가하는 의미임
         // 따라서 true로하면 컨트롤러 uri로 가게 됨.
         return true;

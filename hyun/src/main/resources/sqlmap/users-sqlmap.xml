@@ -2,6 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
 
+	<sql id="search">
+		<if test="searchType !=null">
+			<if test="searchType == 't'.toString()">
+				WHERE 
+					INSTR(ur_id,#{keyword})>0
+			</if>
+			<if test="searchType == 'c'.toString()">
+				WHERE 
+					INSTR(ur_phone,#{keyword})>0
+			</if>
+			<if test="searchType == 'w'.toString()">
+				WHERE 
+					INSTR(ur_addr,#{keyword})>0
+			</if>
+		</if>
+	</sql>
+
 <insert id="UsersInsert" parameterType="UsersForm">
 	INSERT 
 		INTO 
@@ -33,7 +50,7 @@
 		)
 </insert>
 
-<select id="UsersList" resultType="UsersVo">
+<!-- <select id="UsersList" resultType="UsersVo">
 	SELECT
 		ur_no
 		,ur_id
@@ -47,6 +64,46 @@
 		,ur_yn
 		FROM USERS
 		ORDER BY ur_no DESC
+</select> -->
+
+<select id="UsersList" resultType="UsersVo">
+	<![CDATA[
+	SELECT 
+	B.RNUM, B.*
+	FROM(
+    	 SELECT 
+    	 ROWNUM AS RNUM, A.*
+    	 FROM(
+         	  SELECT 
+		         ur_no
+				,ur_id
+				,ur_pw
+				,ur_phone
+				,ur_email
+				,ur_addr
+				,ur_regdate
+				,ur_dropdate
+				,ur_grade
+				,ur_yn
+				FROM USERS
+         	  ]]>
+         	  <include refid="search"></include>
+         	  <![CDATA[
+              ORDER BY ur_no DESC, ur_regdate DESC)A 
+         WHERE ROWNUM <=#{page}*#{perPageNum})B 
+    WHERE B.RNUM >=#{page}*10-9
+	]]>
+</select>
+
+<select id="UsersCount" resultType="int">
+	<![CDATA[
+	SELECT 
+		COUNT(ur_no)
+	FROM
+		USERS
+	WHERE
+		ur_no > 0	
+	]]>
 </select>
 
 <select id="UsersLogin" resultType="UsersVo">

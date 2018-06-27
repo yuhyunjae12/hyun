@@ -10,7 +10,6 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-7">
-					<p class="contact-action"><i class="fa fa-phone-square"></i></p>
 				</div>
 				<div class="col-md-3 clearfix">
 					<ul class="login-cart">
@@ -18,7 +17,6 @@
 					<c:when test="${empty login.urId}">
 							<li>
 							<a data-toggle="modal" data-target="#myModal" href="#">
-							<i class="fa fa-user"></i>
 								Login
 							</a>
 							<a href="/users/logout">
@@ -35,7 +33,6 @@
 							<c:otherwise>
 						  	<li>
 						  	<a data-toggle="modal" data-target="#myModal" href="#">
-							<i class="fa fa-user"></i>
 								${login.urId }
 							</a>
 							<a href="/users/logout">

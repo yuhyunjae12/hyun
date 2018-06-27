@@ -271,11 +271,22 @@ public class ProductController {
 		return (View) new ProductExcelDownload();
 	}
 	
-	/*예제*/
+	@RequestMapping(value="/product/detail")
+	public ModelAndView productDetail(ModelAndView modelAndView, @RequestParam("pdNo") int pdNo) {
+		ProductVo detail = service.productDetail(pdNo);
+		modelAndView.addObject("productDetail",detail);
+		modelAndView.setViewName("/product/productDetail");
+		return modelAndView;
+	}
 	@RequestMapping(value="/product/shop")
-	public ModelAndView productShop(ModelAndView modelAndView) {
+	public ModelAndView productList(@ModelAttribute("cri")Criteria cri, ModelAndView modelAndView) {
+		cri.setPerPageNum(9);
+		modelAndView.addObject("productList", service.shopList(cri));
+		Paging paging=new Paging();
+		paging.setCri(cri);
+		paging.setTotalCount(service.productCount(cri));
+		modelAndView.addObject("paging", paging);
 		modelAndView.setViewName("/product/shop");
 		return modelAndView;
 	}
-	
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.edu.dao.Impl.UsersDaoImpl;
 import com.spring.edu.service.UsersService;
+import com.spring.edu.utill.Criteria;
 import com.spring.edu.vo.UsersVo;
 import com.spring.edu.vo.form.UsersForm;
 import com.spring.edu.vo.form.UsersLogin;
@@ -26,8 +27,13 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public List<UsersVo> usersList() {
-		return dao.usersList();
+	public List<UsersVo> usersList(Criteria cri) {
+		return dao.usersList(cri);
+	}
+
+	@Override
+	public int usersCount() {
+		return dao.usersCount();
 	}
 
 	@Override

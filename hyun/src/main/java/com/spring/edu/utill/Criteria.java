@@ -23,6 +23,11 @@ public class Criteria {
 		this.perPageNum=10;
 	}
 	
+	public Criteria(int perPageNum) {
+		this.page=1;
+		this.perPageNum=perPageNum;
+	}
+	
 	public void setPage(int page) {
 		if(page<=0) {
 			this.page=1;
@@ -32,10 +37,10 @@ public class Criteria {
 	}
 	
 	public void setPerPageNum(int perPageNum) {
-		if(perPageNum<=0  || perPageNum > 100) {
+/*		if(perPageNum<=0  || perPageNum > 100) {
 			this.perPageNum=10;
 			return;
-		}
+		}*/
 		this.perPageNum=perPageNum;
 	}
 }

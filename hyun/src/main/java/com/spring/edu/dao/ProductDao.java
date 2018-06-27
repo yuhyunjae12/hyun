@@ -14,4 +14,5 @@ public interface ProductDao {
 	int productUpdate(productForm productVo);
 	int productCount(Criteria cri);
 	List<ProductVo> productPageing(Criteria cri);
+	List<ProductVo> shopList(Criteria cri);
 }

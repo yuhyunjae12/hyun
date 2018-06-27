@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.edu.dao.ProductDao;
 import com.spring.edu.utill.Criteria;
 import com.spring.edu.vo.ProductVo;
+import com.spring.edu.vo.UsersVo;
 import com.spring.edu.vo.form.productForm;
 @Repository
 public class ProductDaoImpl implements ProductDao {
@@ -50,6 +51,12 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<ProductVo> productPageing(Criteria cri) {
 		List<ProductVo> res =session.selectList(namespace+"productPageing",cri);
+		return res;
+	}
+
+	@Override
+	public List<ProductVo> shopList(Criteria cri) {
+		List<ProductVo> res =session.selectList(namespace+"shopPageing",cri);
 		return res;
 	}
 	

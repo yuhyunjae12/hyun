@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.edu.dao.UsersDao;
+import com.spring.edu.utill.Criteria;
 import com.spring.edu.vo.UsersVo;
 import com.spring.edu.vo.form.UsersForm;
 import com.spring.edu.vo.form.UsersLogin;
@@ -29,8 +30,15 @@ public class UsersDaoImpl implements UsersDao {
 
 
 	@Override
-	public List<UsersVo> usersList() {
-		List<UsersVo> res =sqlSession.selectList(nameSpace+"UsersList");
+	public List<UsersVo> usersList(Criteria cri) {
+		List<UsersVo> res =sqlSession.selectList(nameSpace + "UsersList", cri);
+		return res;
+	}
+
+
+	@Override
+	public int usersCount() {
+		int res = sqlSession.selectOne(nameSpace+"UsersCount");
 		return res;
 	}
 

@@ -46,6 +46,11 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVo> productPageing(Criteria cri) {
 		return dao.productPageing(cri);
 	}
+
+	@Override
+	public List<ProductVo> shopList(Criteria cri) {
+		return dao.shopList(cri);
+	}
 	
 	
 
