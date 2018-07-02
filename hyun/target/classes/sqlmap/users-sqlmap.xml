@@ -129,4 +129,38 @@
 		WHERE ${column} = #{val}
 
 </select>
+
+<select id="UsersDetail" parameterType="int" resultType="UsersVo">
+	SELECT
+		ur_no
+		,ur_id
+		,ur_pw
+		,ur_phone
+		,ur_email
+		,ur_addr
+		,ur_regdate
+		,ur_dropdate
+		,ur_grade
+		,ur_yn
+		FROM USERS
+		WHERE UR_NO = #{urNo}
+</select>
+
+<update id="UsersDelete" parameterType="int">
+	UPDATE
+		USERS SET
+			ur_yn='N'
+			,ur_dropdate=SYSDATE
+			WHERE UR_NO= #{urNo}
+</update>
+
+<update id="UsersUpdate" parameterType="UsersForm">
+	UPDATE
+		USERS SET
+			ur_phone = #{urPhone}
+			,ur_email = #{urEmail}
+			,ur_addr = #{urAddr}
+			WHERE UR_NO= #{urNo}
+</update>
+
 </mapper>

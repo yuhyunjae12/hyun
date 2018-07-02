@@ -17,4 +17,7 @@ public interface UsersDao {
 	UsersVo login(UsersLogin usersVo);
 	int LoginCheck(UsersLogin usersVo);
 	int UdundantInspection(Map<String,String> map);
+	UsersVo usersDetail(int urNo);
+	int usersDelete(int urNo);
+	int usersUpdate(UsersForm usersVo);
 }

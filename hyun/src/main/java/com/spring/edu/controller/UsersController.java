@@ -155,11 +155,33 @@ public class UsersController {
         return "redirect:/"; 
     }
     
+    /**
+      * @Method Name : juso
+      * @작성일 : 2018. 7. 2.
+      * @작성자 : 유현재
+      * @변경이력 : 
+      * @Method 설명 : 도로명 Api 팝업
+      * @param modelAndView
+      * @return
+      */
     @RequestMapping(value="/users/juso")
-    public String logout() {
-        return "/users/jusoPopup"; 
+    public ModelAndView juso(ModelAndView modelAndView) {
+    	modelAndView.setViewName("/users/jusoPopup");
+        return modelAndView; 
     }
     
+	/**
+	  * @Method Name : UserUdundantInspection
+	  * @작성일 : 2018. 7. 2.
+	  * @작성자 : 유현재
+	  * @변경이력 : 
+	  * @Method 설명 : 회원가입 아이디 전화번호 이메일 중복체크
+	  * @param model
+	  * @param column
+	  * @param val
+	  * @param response
+	  * @return
+	  */
 	@RequestMapping(value = "/users/UdundantInspection")
 	@ResponseBody
 	public int UserUdundantInspection(Model model, @RequestParam("column") String column,
@@ -168,4 +190,79 @@ public class UsersController {
 		int urNo = service.UdundantInspection(column, val);
 		return urNo;
 	}
+	
+    /**
+      * @Method Name : usersDetail
+      * @작성일 : 2018. 7. 2.
+      * @작성자 : 유현재
+      * @변경이력 : 
+      * @Method 설명 : 회원 상세 보기
+      * @param modelAndView
+      * @param urNo
+      * @return
+      */
+    @RequestMapping(value="/users/detail")
+    public ModelAndView usersDetail(ModelAndView modelAndView, @RequestParam("urNo") int urNo) {
+    	modelAndView.addObject("detail",service.usersDetail(urNo));
+    	modelAndView.setViewName("/users/usersDetail");
+        return modelAndView; 
+    }
+    
+    /**
+      * @Method Name : usersUpdateForm
+      * @작성일 : 2018. 7. 2.
+      * @작성자 : 유현재
+      * @변경이력 : 
+      * @Method 설명 : 회원 정보 수정 form
+      * @param modelAndView
+      * @param urNo
+      * @return
+      */
+    @RequestMapping(value="/users/updateForm")
+    public ModelAndView usersUpdateForm(ModelAndView modelAndView, @RequestParam("urNo") int urNo) {
+    	modelAndView.addObject("detail",service.usersDetail(urNo));
+    	modelAndView.setViewName("/users/usersUpdate");
+        return modelAndView; 
+    }
+    
+    /**
+      * @Method Name : usersUpdateAfter
+      * @작성일 : 2018. 7. 2.
+      * @작성자 : 유현재
+      * @변경이력 : 
+      * @Method 설명 : 회원 정보수정
+      * @param usersVo
+      * @param result
+      * @param urNo
+      * @return
+      */
+    @RequestMapping(value="/users/updateAfter",method=RequestMethod.POST)
+    public ModelAndView usersUpdateAfter(@ModelAttribute @Valid UsersForm usersVo, BindingResult result, @RequestParam("urNo") int urNo) {
+    	if(result.hasErrors()) {
+			 ModelAndView modelAndView = new ModelAndView();
+			 modelAndView.setViewName("/users/updateForm");
+			 return modelAndView;
+		}
+		service.usersUpdate(usersVo);
+		return new ModelAndView("redirect:/users/detail?urNo="+urNo);
+    }
+    
+    /**
+      * @Method Name : usersDelete
+      * @작성일 : 2018. 7. 2.
+      * @작성자 : 유현재
+      * @변경이력 : 
+      * @Method 설명 : 회원 탈퇴
+      * @param session
+      * @param modelAndView
+      * @param urNo
+      * @return
+      */
+    @RequestMapping(value="/users/delete")
+    public ModelAndView usersDelete(HttpSession session, ModelAndView modelAndView, @RequestParam("urNo") int urNo) {
+    	service.usersDelete(urNo);
+    	session.invalidate();
+    	modelAndView.setViewName("redirect:/");
+    	return modelAndView;
+    }
 }

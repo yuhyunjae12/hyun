@@ -10,7 +10,7 @@ import lombok.Data;
 public class UsersForm {
 
 	   /*회원번호*/
-	   private Integer uNo;
+	   private Integer urNo;
 	   
 	   /*회원아이디*/
 	   @NotEmpty(message="아이디를 입력해주세요.")

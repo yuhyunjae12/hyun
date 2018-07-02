@@ -25,8 +25,18 @@
 							<a href="/users/usersInsert">
 								regist
 							</a>
+						</li>
+					</c:when>
+					<c:when test="${login.urGrade eq 'admin'}">
+							<li>
 							<a href="/admin/main">
-								admin
+								${login.urId }
+							</a>
+							<a href="/users/logout">
+								logout
+							</a>
+							<a href="/users/detail?urNo=${login.urNo }">
+								myPage
 							</a>
 						</li>
 					</c:when>
@@ -38,10 +48,7 @@
 							<a href="/users/logout">
 								logout
 							</a>
-							<a href="/admin/main">
-								admin
-							</a>
-							<a href="#">
+							<a href="/users/detail?urNo=${login.urNo }">
 								myPage
 							</a>
 						  	</c:otherwise>

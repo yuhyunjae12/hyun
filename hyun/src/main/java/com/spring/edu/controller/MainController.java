@@ -15,8 +15,18 @@ public class MainController {
 	@Autowired
 	private ProductService service;
 
+	/**
+	  * @Method Name : Main
+	  * @작성일 : 2018. 7. 2.
+	  * @작성자 : 유현재
+	  * @변경이력 : 
+	  * @Method 설명 : 메인페이지
+	  * @param cri
+	  * @param modelAndView
+	  * @return
+	  */
 	@RequestMapping("/")
-	public ModelAndView boardMain(@ModelAttribute("cri")Criteria cri, ModelAndView modelAndView) {
+	public ModelAndView Main(@ModelAttribute("cri")Criteria cri, ModelAndView modelAndView) {
 		cri.setPerPageNum(8);
 		modelAndView.addObject("productList", service.shopList(cri));
 		modelAndView.setViewName("/home");

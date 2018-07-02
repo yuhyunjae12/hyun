@@ -271,6 +271,16 @@ public class ProductController {
 		return (View) new ProductExcelDownload();
 	}
 	
+	/**
+	  * @Method Name : productDetail
+	  * @작성일 : 2018. 7. 2.
+	  * @작성자 : 유현재
+	  * @변경이력 : 
+	  * @Method 설명 : 상품 상세보기
+	  * @param modelAndView
+	  * @param pdNo
+	  * @return
+	  */
 	@RequestMapping(value="/product/detail")
 	public ModelAndView productDetail(ModelAndView modelAndView, @RequestParam("pdNo") int pdNo) {
 		ProductVo detail = service.productDetail(pdNo);
@@ -278,6 +288,16 @@ public class ProductController {
 		modelAndView.setViewName("/product/productDetail");
 		return modelAndView;
 	}
+	/**
+	  * @Method Name : productList
+	  * @작성일 : 2018. 7. 2.
+	  * @작성자 : 유현재
+	  * @변경이력 : 
+	  * @Method 설명 : 상품 리스트
+	  * @param cri
+	  * @param modelAndView
+	  * @return
+	  */
 	@RequestMapping(value="/product/shop")
 	public ModelAndView productList(@ModelAttribute("cri")Criteria cri, ModelAndView modelAndView) {
 		cri.setPerPageNum(9);

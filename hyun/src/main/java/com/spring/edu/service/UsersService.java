@@ -16,4 +16,7 @@ public interface UsersService {
 	UsersVo login(UsersLogin usersVo);
 	int LoginCheck(UsersLogin usersVo);
 	int UdundantInspection(String column, String val);
+	UsersVo usersDetail(int urNo);
+	int usersDelete(int urNo);
+	int usersUpdate(UsersForm usersVo);
 }

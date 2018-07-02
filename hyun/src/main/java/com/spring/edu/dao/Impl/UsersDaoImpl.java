@@ -63,4 +63,25 @@ public class UsersDaoImpl implements UsersDao {
 		return res;
 	}
 
+
+	@Override
+	public UsersVo usersDetail(int urNo) {
+		UsersVo res = sqlSession.selectOne(nameSpace+"UsersDetail", urNo);
+		return res;
+	}
+
+
+	@Override
+	public int usersDelete(int urNo) {
+		return sqlSession.update(nameSpace+"UsersDelete", urNo);
+	}
+
+
+	@Override
+	public int usersUpdate(UsersForm usersVo) {
+		return sqlSession.update(nameSpace+"UsersUpdate", usersVo);
+	}
+	
+	
+
 }

@@ -53,5 +53,21 @@ public class UsersServiceImpl implements UsersService {
 		map.put("val", val);
 		return dao.UdundantInspection(map);
 	}
+
+	@Override
+	public UsersVo usersDetail(int urNo) {
+		return dao.usersDetail(urNo);
+	}
+
+	@Override
+	public int usersDelete(int urNo) {
+		return dao.usersDelete(urNo);
+	}
+
+	@Override
+	public int usersUpdate(UsersForm usersVo) {
+		return dao.usersUpdate(usersVo);
+	}
+	
 	
 }
