@@ -97,25 +97,25 @@
 						<div class="block">
 							<h4>Catagories</h4>
 							<div class="list-group">
-								<a href="#" class="list-group-item">
+								<a href="/product/shop?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=t&keyword=웰시코기" class="list-group-item">
 									<i class="fa  fa-dot-circle-o"></i>
-									포메라니안
+									웰시코기
 								</a>
-								<a href="#" class="list-group-item">
+								<a href="/product/shop?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=t&keyword=푸들" class="list-group-item">
 									<i class="fa  fa-dot-circle-o"></i>
 									푸틀
 								</a>
-								<a href="#" class="list-group-item">
+								<a href="/product/shop?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=t&keyword=치와와" class="list-group-item">
 									<i class="fa  fa-dot-circle-o"></i>
 									치와와
 								</a>
-								<a href="#" class="list-group-item">
+								<a href="/product/shop?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=t&keyword=말티즈" class="list-group-item">
 									<i class="fa  fa-dot-circle-o"></i>
-									마르티즈
+									말티즈
 								</a>
-								<a href="#" class="list-group-item">
+								<a href="/product/shop?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=t&keyword=보스턴테리어" class="list-group-item">
 									<i class="fa  fa-dot-circle-o"></i>
-									댕댕이
+									보스턴테리어
 								</a>
 							</div>
 						</div>

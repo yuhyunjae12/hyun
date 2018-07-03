@@ -38,7 +38,7 @@
                 <li class="list-group-item">${productDetail.pdBirth}</li>
               </ul>
               <input type="button" class="btn btn-primary" value="수정" onclick="location.href='/admin/productUpdate?pdNo=${productDetail.pdNo}';">
-              <input type="button" class="btn btn-success" value="분양완료" onclick="location.href='#';">
+              <input type="button" class="btn btn-success" value="분양완료" onclick="location.href='/admin/productDelete?pdNo=${productDetail.pdNo}';">
 			  <a class="btnnew noty" onclick="javascript:history.back();">뒤로가기</a>
             </div>
           </div>

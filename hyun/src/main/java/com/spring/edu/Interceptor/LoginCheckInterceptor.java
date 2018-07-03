@@ -13,6 +13,14 @@ import com.spring.edu.vo.UsersVo;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+  * @FileName : LoginCheckInterceptor.java
+  * @Project : hyun
+  * @Date : 2018. 7. 3. 
+  * @작성자 : 유현재
+  * @변경이력 :
+  * @프로그램 설명 : 로그인 세션 관리 인터셉터 설정
+  */
 @Slf4j
 public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 

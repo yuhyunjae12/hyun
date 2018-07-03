@@ -13,6 +13,14 @@
 			</if>
 		</if>
 	</sql>
+	<sql id="shopSearch">
+		<if test="searchType !=null">
+			<if test="searchType == 't'.toString()">
+			AND
+					INSTR(PD_KIND,#{keyword})>0
+			</if>
+		</if>
+	</sql>
 <select id="productList" resultType="ProductVo">
 	SELECT
 		 PD_NO
@@ -101,6 +109,18 @@
 	]]>
 </select>
 
+<select id="shopCount" resultType="int">
+	<![CDATA[
+	SELECT 
+		COUNT(pd_no)
+	FROM
+		PRODUCT
+	WHERE
+		pd_no > 0	AND PD_SALE='Y'
+	]]>
+	<include refid="shopSearch"></include>
+</select>
+
 <select id="productPageing" resultType="ProductVo">
 	<![CDATA[
 	SELECT 
@@ -150,12 +170,21 @@
 				,PD_IMG
 				,PD_REGDATE
          	  FROM PRODUCT
+         	  WHERE PD_SALE='Y'
          	  ]]>
-         	  <include refid="search"></include>
+         	  <include refid="shopSearch"></include>
          	  <![CDATA[
               ORDER BY PD_NO DESC, PD_REGDATE DESC)A 
          WHERE ROWNUM <=#{page}*#{perPageNum})B 
     WHERE B.RNUM >=#{page}*9-8
 	]]>
 </select>
+
+<update id="productDelete" parameterType="int">
+	UPDATE
+		PRODUCT SET
+			PD_SALE='N'
+			WHERE PD_NO= #{pdNo}
+
+</update>
 </mapper>

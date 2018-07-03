@@ -51,7 +51,17 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVo> shopList(Criteria cri) {
 		return dao.shopList(cri);
 	}
-	
-	
+
+	@Override
+	public int productDelete(int pdNo) {
+		return dao.productDelete(pdNo);
+	}
+
+	@Override
+	public int shopCount(Criteria cri) {
+		return dao.shopCount(cri);
+	}
+
+
 
 }

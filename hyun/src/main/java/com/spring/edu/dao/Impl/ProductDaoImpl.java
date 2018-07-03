@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.spring.edu.dao.ProductDao;
 import com.spring.edu.utill.Criteria;
 import com.spring.edu.vo.ProductVo;
-import com.spring.edu.vo.UsersVo;
 import com.spring.edu.vo.form.productForm;
 @Repository
 public class ProductDaoImpl implements ProductDao {
@@ -59,7 +58,17 @@ public class ProductDaoImpl implements ProductDao {
 		List<ProductVo> res =session.selectList(namespace+"shopPageing",cri);
 		return res;
 	}
-	
+
+	@Override
+	public int productDelete(int pdNo) {
+		return session.update(namespace+"productDelete",pdNo);
+	}
+
+	@Override
+	public int shopCount(Criteria cri) {
+		return session.selectOne(namespace+"shopCount",cri);
+	}
+
 	
 	
 

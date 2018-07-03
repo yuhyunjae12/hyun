@@ -15,6 +15,6 @@ public interface ProductService {
 	int productCount(Criteria cri);
 	List<ProductVo> productPageing(Criteria cri);
 	List<ProductVo> shopList(Criteria cri);
-
-
+	int productDelete(int pdNo);
+	int shopCount(Criteria cri);
 }

@@ -272,6 +272,23 @@ public class ProductController {
 	}
 	
 	/**
+	  * @Method Name : productDelete
+	  * @작성일 : 2018. 7. 3.
+	  * @작성자 : 유현재
+	  * @변경이력 : 
+	  * @Method 설명 : 상품 분양 완료
+	  * @param modelAndView
+	  * @param pdNo
+	  * @return
+	  */
+	@RequestMapping(value="/admin/productDelete")
+	public ModelAndView productDelete(ModelAndView modelAndView, @RequestParam("pdNo") int pdNo) {
+		service.productDelete(pdNo);
+		modelAndView.setViewName("redirect:/admin/productAdmin");
+		return modelAndView;
+	}
+	
+	/**
 	  * @Method Name : productDetail
 	  * @작성일 : 2018. 7. 2.
 	  * @작성자 : 유현재
@@ -304,9 +321,11 @@ public class ProductController {
 		modelAndView.addObject("productList", service.shopList(cri));
 		Paging paging=new Paging();
 		paging.setCri(cri);
-		paging.setTotalCount(service.productCount(cri));
+		paging.setTotalCount(service.shopCount(cri));
 		modelAndView.addObject("paging", paging);
 		modelAndView.setViewName("/product/shop");
 		return modelAndView;
 	}
+	
+
 }
