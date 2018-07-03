@@ -103,7 +103,7 @@
 								</a>
 								<a href="/product/shop?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=t&keyword=푸들" class="list-group-item">
 									<i class="fa  fa-dot-circle-o"></i>
-									푸틀
+									푸들
 								</a>
 								<a href="/product/shop?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=t&keyword=치와와" class="list-group-item">
 									<i class="fa  fa-dot-circle-o"></i>
@@ -120,7 +120,7 @@
 							</div>
 						</div>
 						<div class="block">
-							<img src="/resources/images/food-ad.png" alt="">
+							<img src="/resources/images/dog-ad.png" alt="">
 						</div>
 				</div>	<!-- End of /.col-md-3 -->
 			
