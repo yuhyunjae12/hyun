@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.spring.edu.vo.UsersVo;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -20,11 +22,18 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
         // session 객체를 가져옴
         HttpSession session = request.getSession();
         // login처리를 담당하는 사용자 정보를 담고 있는 객체를 가져옴
-        Object obj = session.getAttribute("login");
-        if ( obj == null ){
+        UsersVo usersVo = (UsersVo) session.getAttribute("login");
+        if ( usersVo == null ){
             // 로그인이 안되어 있는 상태임으로 메인페이지로 다시 돌려보냄(redirect)
-            response.sendRedirect("/");
+        	response.sendRedirect("/");
             return false; // 더이상 컨트롤러 요청으로 가지 않도록 false로 반환함
+        }else if(request.getRequestURI().contains("admin")) {
+        	if(usersVo.getUrGrade().equals("admin")) {
+        		return true;
+        	}else if(usersVo.getUrGrade().equals("USER")){
+        		response.sendRedirect("/");
+        		return false;
+        	}
         }
         
         // preHandle의 return은 컨트롤러 요청 uri로 가도 되냐 안되냐를 허가하는 의미임
