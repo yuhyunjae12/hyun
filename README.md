@@ -31,6 +31,7 @@ Linux CentOs 7
 * 에디터 추가(ex.CKEDITER,smartEditer)
 * QNA 게시판 추가
 * 관리자 페이지 UI 및 스케쥴러를 통한 분양 관리 추가
+* 이메일 ssl문제 
 
 ## 정보
 
