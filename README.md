@@ -1,25 +1,12 @@
 # 프로젝트명
-> 간략한 프로젝트 소개 문구를 작성합니다.
-[포트폴리오링크](http://220.230.122.33:8080)
-한 두 문단으로 프로젝트 소개 글을 작성합니다.
+> XXX입니다
+강아지 분양 사이트 포트폴리오 입니다
 
+[포트폴리오링크](http://220.230.122.33:8080)
 ![](../header.png)
 
-## 설치 방법
 
-OS X & 리눅스:
-
-```sh
-npm install my-crazy-module --save
-```
-
-윈도우:
-
-```sh
-edit autoexec.bat
-```
-
-## 사용 예제
+## 관리자 계정
 
 어드민 계정
 admin/admin
@@ -27,34 +14,24 @@ admin/admin
 관리자 페이지 상단 메뉴 admin 클릭
 
 
-## 개발 환경 설정
-
-모든 개발 의존성 설치 방법과 자동 테스트 슈트 실행 방법을 운영체제 별로 작성합니다.
+## 개발 환경
 
 ```sh
-make install
-npm test
+Window 10
+sts-3.9.4.RELEASE(eclipse)
+Oracle 11g
+apache-tomcat-8.5.31
+Linux CentOs 7
 ```
 
-## 업데이트 내역
+## 업데이트 예정 내역
 
-* 0.2.1
-    * 수정: 문서 업데이트 (모듈 코드 동일)
-* 0.2.0
-    * 수정: `setDefaultXYZ()` 메서드 제거
-    * 추가: `init()` 메서드 추가
-* 0.1.1
-    * 버그 수정: `baz()` 메서드 호출 시 부팅되지 않는 현상 (@컨트리뷰터 감사합니다!)
-* 0.1.0
-    * 첫 출시
-    * 수정: `foo()` 메서드 네이밍을 `bar()`로 수정
-* 0.0.1
-    * 작업 진행 중
+* 비밀번호 암호화 하기(ex.SHA512)
+* 시큐리티 추가
+* 에디터 추가(ex.CKEDITER,smartEditer)
+* QNA 게시판 추가
+* 관리자 페이지 UI 및 스케쥴러를 통한 분양 관리 추가
 
 ## 정보
 
-이름 – [@트위터 주소](https://twitter.com/dbader_org) – 이메일주소@example.com
-
-XYZ 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확인할 수 있습니다.
-
-[https://github.com/yourname/github-link](https://github.com/dbader/)
+이름 – 유현재 – 이메일주소 yuhyunjae12@naver.com
