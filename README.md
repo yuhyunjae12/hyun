@@ -4,7 +4,7 @@
 애견 분양 사이트 포트폴리오 입니다
 
 [포트폴리오링크](http://220.230.122.33:8080)
-![](../header.png)
+![main](https://user-images.githubusercontent.com/34294565/42256420-0e41cd88-7f8c-11e8-8aa3-4658492db7ee.jpg)
 
 
 ## 관리자 계정
