@@ -33,7 +33,7 @@ function userPwSearch() {
 				alert(data);
 				$("#search").prop("disabled",false);
 				}else{
-					alert("비밀 번호변경에 대한 메일을 발송하엿습니다 확인해주시기바랍니다");
+					alert("임시 비밀번호를 발송하엿습니다 비밀번호를 변경해 주시기 바랍니다.");
 					$("#search").prop("disabled",false);
 					location.href="/";
 			}
