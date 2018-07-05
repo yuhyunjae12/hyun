@@ -1,16 +1,18 @@
 package com.spring.edu.controller;
 
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,6 +43,9 @@ public class UsersController {
 	
 	@Autowired
 	private UsersService service;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	/**
 	  * @Method Name : usersInsert
@@ -186,7 +191,6 @@ public class UsersController {
 	@ResponseBody
 	public int UserUdundantInspection(Model model, @RequestParam("column") String column,
 			@RequestParam("val") String val, HttpServletResponse response) {
-		System.out.println(val);
 		int urNo = service.UdundantInspection(column, val);
 		return urNo;
 	}
@@ -265,4 +269,112 @@ public class UsersController {
     	modelAndView.setViewName("redirect:/");
     	return modelAndView;
     }
+    
+    /**
+      * @Method Name : pwSearchForm
+      * @작성일 : 2018. 7. 6.
+      * @작성자 : 유현재
+      * @변경이력 : 
+      * @Method 설명 : 비밀번호 찾기 폼
+      * @param modelAndView
+      * @return
+      */
+    @RequestMapping(value="/users/pwSearchForm")
+    public ModelAndView pwSearchForm(ModelAndView modelAndView) {
+    	modelAndView.setViewName("/users/usersPwSearch");
+    	return modelAndView;
+    }
+    
+	/**
+	  * @Method Name : PwSearch
+	  * @작성일 : 2018. 7. 6.
+	  * @작성자 : 유현재
+	  * @변경이력 : 
+	  * @Method 설명 : 임시비밀번호 이메일 전송
+	  * @param model
+	  * @param urId
+	  * @param urEmail
+	  * @param response
+	  * @return
+	  * @throws MessagingException
+	  */
+	@RequestMapping(value = "/users/pwSearch")
+	@ResponseBody
+	public Map<String, String> PwSearch(Model model, @RequestParam("urId") String urId,
+			@RequestParam("urEmail") String urEmail,
+			HttpServletResponse response) throws MessagingException {
+		UsersVo usersVo = new UsersVo();
+		usersVo.setUrId(urId);
+		usersVo.setUrEmail(urEmail);
+		String u_id2 = service.UserPwSearch(usersVo);
+		Map<String, String> map = new HashMap<>();
+		if (u_id2 == null || u_id2 == "") {
+			map.put("data", "false");
+		} else {
+			String pw ="";
+			for(int i = 0; i<10; i++) {
+				pw += (char)(Math.random()*10)+1;
+			}
+			usersVo.setUrPw(pw);
+			service.usersUpdatePassword(usersVo);
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message,true,"UTF-8");
+			
+			messageHelper.setFrom("emailtest4233@gmail.com");
+			messageHelper.setTo(urEmail);
+			messageHelper.setSubject("임시 비밀번호 발송입니다.");
+			messageHelper.setText(urId + " 님의 임시비밀번호는 ."+usersVo.getUrPw()+"입니다.",true);
+			
+			mailSender.send(message);
+			map.put("data", "success");
+			
+		}
+		return map;
+
+	}
+	
+	
+	/**
+	  * @Method Name : usersIdSearchForm
+	  * @작성일 : 2018. 7. 6.
+	  * @작성자 : 유현재
+	  * @변경이력 : 
+	  * @Method 설명 : 아이디 찾기 폼
+	  * @param modelAndview
+	  * @return
+	  */
+	@RequestMapping(value="/users/idSerachForm")
+	public ModelAndView usersIdSearchForm(ModelAndView modelAndview) {
+		modelAndview.setViewName("/users/usersIdSearch");
+		return modelAndview;
+	}
+	
+	
+	/**
+	  * @Method Name : userIdSearchRes
+	  * @작성일 : 2018. 7. 6.
+	  * @작성자 : 유현재
+	  * @변경이력 : 
+	  * @Method 설명 : 아이디 찾기
+	  * @param urPhone
+	  * @param urEmail
+	  * @param modelAndView
+	  * @return
+	  */
+	@RequestMapping("/user/idSearch")
+	public ModelAndView userIdSearchRes(String urPhone, String urEmail, ModelAndView modelAndView) {
+		UsersForm usersVo= new UsersForm();
+		usersVo.setUrPhone(urPhone);
+		usersVo.setUrEmail(urEmail);
+		String urId = service.usersIdSearch(usersVo);
+		
+		if(urId == null || urId.equals("")) {
+			modelAndView.addObject("erorr","해당 회원은 존재하지 않습니다");
+			modelAndView.setViewName("/users/usersIdSearch");
+		} else {
+			modelAndView.addObject("success","아이디는 : "+ urId +" 입니다.");
+			modelAndView.setViewName("/users/usersIdSearch");
+		}
+		return modelAndView;
+	}
 }

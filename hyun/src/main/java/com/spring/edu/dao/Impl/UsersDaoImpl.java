@@ -81,6 +81,24 @@ public class UsersDaoImpl implements UsersDao {
 	public int usersUpdate(UsersForm usersVo) {
 		return sqlSession.update(nameSpace+"UsersUpdate", usersVo);
 	}
+
+
+	@Override
+	public String UserPwSearch(UsersVo usersVo) {
+		return sqlSession.selectOne(nameSpace+"UsersPwSearch",usersVo);
+	}
+
+
+	@Override
+	public int usersUpdatePassword(UsersVo usersVo) {
+		return sqlSession.update(nameSpace+"UsersPwUpdate",usersVo);
+	}
+
+
+	@Override
+	public String usersIdSearch(UsersForm usersVo) {
+		return sqlSession.selectOne(nameSpace+"UserIdSearch",usersVo);
+	}
 	
 	
 

@@ -11,16 +11,11 @@
 	<title>Portfolio</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
- 	<!-- Fonts -->
-<!-- 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
- --> 
 	<!-- Css -->
 	<link rel="stylesheet" href="/resources/css/nivo-slider.css" type="text/css" />
 	<link rel="stylesheet" href="/resources/css/owl.carousel.css">
 	<link rel="stylesheet" href="/resources/css/owl.theme.css">
 	<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-<!-- 	<link rel="stylesheet" href="/resources/css/font-awesome.min.css"> -->
 	<link rel="stylesheet" href="/resources/css/style.css">
 	<link rel="stylesheet" href="/resources/css/responsive.css">
 	<!-- 게시판용 css추가 -->

@@ -19,4 +19,8 @@ public interface UsersService {
 	UsersVo usersDetail(int urNo);
 	int usersDelete(int urNo);
 	int usersUpdate(UsersForm usersVo);
+	String UserPwSearch(UsersVo usersVo);
+	int usersUpdatePassword(UsersVo usersVo);
+	String usersIdSearch(UsersForm usersVo);
+
 }

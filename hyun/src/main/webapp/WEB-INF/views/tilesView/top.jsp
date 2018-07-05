@@ -102,7 +102,7 @@ $(document).ready(function (){
 										<span><input placeholder="비밀번호를 입력해주세요" type="password" id="passwd" name="urPw" value="" class="account_input"></span>
 									</p>
 									<p class="lost_password">
-										<a href="#popab-password-reset" class="popab-password-link">비밀 번호 찾기</a>
+										<a href="/users/idSerachForm" class="popab-password-link">비밀 번호 찾기</a>
 									</p>
 									<p class="submit">
 										<button type="button" id="save" class="btn btn-success">Log in</button>

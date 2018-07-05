@@ -68,6 +68,21 @@ public class UsersServiceImpl implements UsersService {
 	public int usersUpdate(UsersForm usersVo) {
 		return dao.usersUpdate(usersVo);
 	}
+
+	@Override
+	public String UserPwSearch(UsersVo usersVo) {
+		return dao.UserPwSearch(usersVo);
+	}
+
+	@Override
+	public int usersUpdatePassword(UsersVo usersVo) {
+		return dao.usersUpdatePassword(usersVo);
+	}
+
+	@Override
+	public String usersIdSearch(UsersForm usersVo) {
+		return dao.usersIdSearch(usersVo);
+	}
 	
 	
 }

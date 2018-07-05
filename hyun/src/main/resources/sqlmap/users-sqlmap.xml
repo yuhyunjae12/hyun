@@ -163,4 +163,27 @@
 			WHERE UR_NO= #{urNo}
 </update>
 
+<select id="UsersPwSearch" parameterType="UsersVo" resultType="String">
+	SELECT 
+		UR_ID 
+		FROM USERS 
+		WHERE UR_ID = #{urId} 
+		AND UR_EMAIL = #{urEmail}
+</select>
+
+<update id="UsersPwUpdate" parameterType="UsersVo"  >
+	UPDATE 
+		USERS SET 
+		UR_PW = #{urPw} 
+		WHERE UR_ID=#{urId}
+</update>
+
+<select id="UserIdSearch" parameterType="UsersForm" resultType="String">
+	SELECT 
+		UR_ID 
+		FROM USERS 
+		WHERE UR_PHONE=#{urPhone} 
+		AND UR_EMAIL = #{urEmail}
+</select>
+
 </mapper>
