@@ -32,7 +32,4 @@ Linux CentOs 7
 * QNA 게시판 추가
 * 관리자 페이지 UI 및 스케쥴러를 통한 분양 관리 추가
 * 이메일 ssl문제 
-
-## 정보
-
-이름 – 유현재 – 이메일주소 yuhyunjae12@naver.com
+  * 7.5일 ssl 문제 완료 (html 형식으로 )
