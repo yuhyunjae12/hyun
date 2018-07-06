@@ -28,18 +28,19 @@ public class AnswerBoardDaoImpl implements AnswerBoardDao {
         
         return session.selectList(namespace+"listPaging",map);
     }    
-    
-
-    @Override
-    public List<AnswerBoardVo> list(int brNo) throws Exception {
-        return session.selectList(namespace+"list", brNo);
-    }
-
+  
 
     @Override
     public void create(AnswerBoardVo vo) throws Exception {
         session.insert(namespace+"create",vo);
     }
+    
+    
+    @Override
+    public void createRe(AnswerBoardVo vo) throws Exception {
+        session.insert(namespace+"createRe",vo);        
+    }
+
 
     @Override
     public void update(AnswerBoardVo vo) throws Exception {
@@ -56,6 +57,4 @@ public class AnswerBoardDaoImpl implements AnswerBoardDao {
         return session.selectOne(namespace+"count",brNo);
     }
     
-    
-
 }

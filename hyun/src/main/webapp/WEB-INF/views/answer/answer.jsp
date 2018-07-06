@@ -206,7 +206,7 @@
 	</div>
 	<!--// 페이징 -->
 	
-	<!--잠시 주석 달아놓음-->
+
 	<section id="ly12_board-area">
 		<div class="container">
 		댓글 영역
@@ -262,7 +262,6 @@
 		//댓글 영역 
 		</div>
 	</section>
-	<!--//잠시 주석 달아놓음-->
 
 </body>
 </html>
