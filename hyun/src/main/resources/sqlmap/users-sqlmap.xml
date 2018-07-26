@@ -50,21 +50,11 @@
 		)
 </insert>
 
-<!-- <select id="UsersList" resultType="UsersVo">
+<select id="UserName" resultType="UsersVo">
 	SELECT
-		ur_no
-		,ur_id
-		,ur_pw
-		,ur_phone
-		,ur_email
-		,ur_addr
-		,ur_regdate
-		,ur_dropdate
-		,ur_grade
-		,ur_yn
+		ur_id
 		FROM USERS
-		ORDER BY ur_no DESC
-</select> -->
+</select>
 
 <select id="UsersList" resultType="UsersVo">
 	<![CDATA[

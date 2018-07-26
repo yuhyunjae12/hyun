@@ -1,10 +1,7 @@
 package com.spring.edu.vo;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-
-@EqualsAndHashCode(callSuper=false)
 @Data
 public class SearchCriteria extends BoardCriteria{
 	
@@ -13,5 +10,4 @@ public class SearchCriteria extends BoardCriteria{
 	
 	/*검색 키워드*/
 	private String keyword;
-	
 }
