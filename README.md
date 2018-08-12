@@ -4,6 +4,7 @@
 [포트폴리오링크](http://220.230.122.33:8080)
 
 ![main](https://user-images.githubusercontent.com/34294565/42256420-0e41cd88-7f8c-11e8-8aa3-4658492db7ee.jpg)
+![logo](https://user-images.githubusercontent.com/34294565/43997879-67f7802e-9e23-11e8-8b28-0ba5d61c850b.png)
 
 
 ## 관리자 계정
